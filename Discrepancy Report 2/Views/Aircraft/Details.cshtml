@@ -4,7 +4,7 @@
     ViewData["Title"] = "Details";
 }
 
-<h2>Details</h2>
+<h2>Details of Aircraft</h2>
 
 <div>
     <h4>Aircraft</h4>
@@ -29,10 +29,50 @@
             @Html.DisplayFor(model => model.TailNumber)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.AircraftModel)
+            @Html.DisplayNameFor(model => model.AircraftModel.ModelType)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.AircraftModel.ID)
+            @Html.DisplayFor(model => model.AircraftModel.ModelType)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AircraftModel.Manufacturer)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AircraftModel.Manufacturer)
+        </dd>
+        <dd>
+            <table class="table">
+                <tr>
+                    <th colspan="5" style="text-align:center">Aircraft Assignment Details</th>
+                </tr>
+                <tr>
+                    <th style="text-align:center">Region Code</th>
+                    <th style="text-align:center">Region Name</th>
+                    <th style="text-align:center">Location Code</th>
+                    <th style="text-align:center">Planned Assignment</th>
+                    <th style="text-align:center">Unplanned Assignment</th>
+                </tr>
+                @foreach (var item in Model.AircraftLocationAssignments)
+                {
+                    <tr>
+                        <td style="text-align:center">
+                            @Html.DisplayFor(modelItem => item.Location.RegionCode)
+                        </td>
+                        <td style="text-align:center">
+                            @Html.DisplayFor(modelItem => item.Location.RegionName)
+                        </td>
+                        <td style="text-align:center">
+                            @Html.DisplayFor(modelItem => item.Location.LocationCode)
+                        </td>
+                        <td style="text-align:center">
+                            @Html.DisplayFor(modelItem => item.Planned)
+                        </td>
+                        <td style="text-align:center">
+                            @Html.DisplayFor(modelItem => item.Unplanned)
+                        </td>
+                    </tr>
+                }
+            </table>
         </dd>
     </dl>
 </div>

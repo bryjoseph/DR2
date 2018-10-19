@@ -6,7 +6,7 @@
 
 <h2>Create</h2>
 
-<h4>Aircraft</h4>
+<h4>New Aircraft Data</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -28,8 +28,11 @@
                 <span asp-validation-for="TailNumber" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="AircraftModelID" class="control-label"></label>
-                <select asp-for="AircraftModelID" class ="form-control" asp-items="ViewBag.AircraftModelID"></select>
+                <label asp-for="AircraftModel" class="control-label"></label>
+                <select asp-for="AircraftModelID" class="form-control" asp-items="ViewBag.ID">
+                    <option value="">--- Select Aircraft Model ---</option>
+                </select>
+                <span asp-validation-for="AircraftModelID" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-default" />
