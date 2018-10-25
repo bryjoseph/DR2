@@ -11,9 +11,10 @@ using System;
 namespace Discrepancy_Report_2.Data.Migrations
 {
     [DbContext(typeof(MaintenanceDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20181024170221_changingEmpColumnNames")]
+    partial class changingEmpColumnNames
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -168,7 +169,7 @@ namespace Discrepancy_Report_2.Data.Migrations
 
                     b.Property<bool>("Cruise");
 
-                    b.Property<DateTime?>("CustomerAcceptanceDate");
+                    b.Property<DateTime>("CustomerAcceptanceDate");
 
                     b.Property<string>("CustomerName");
 
@@ -178,11 +179,15 @@ namespace Discrepancy_Report_2.Data.Migrations
 
                     b.Property<string>("DiscrepancyDescription");
 
+                    b.Property<int>("Employee1ID");
+
+                    b.Property<int>("Employee2ID");
+
                     b.Property<int>("EmployeeID");
 
                     b.Property<bool>("EngineStart");
 
-                    b.Property<DateTime?>("GovOfficialDateSigned");
+                    b.Property<DateTime>("GovOfficialDateSigned");
 
                     b.Property<string>("GovernmentOfficial");
 
@@ -198,32 +203,27 @@ namespace Discrepancy_Report_2.Data.Migrations
 
                     b.Property<bool>("MasterWarning");
 
+                    b.Property<DateTime>("MechanicDateSigned");
+
                     b.Property<bool>("OnTakeoffRoll");
 
                     b.Property<bool>("OpsCheckRequired");
 
                     b.Property<bool>("Postflight");
 
-                    b.Property<DateTime?>("QaDateSigned");
-
-                    b.Property<string>("QaName");
+                    b.Property<DateTime>("QaDateSigned");
 
                     b.Property<string>("ReferenceDocument1");
 
                     b.Property<string>("ReferenceDocument2");
 
-                    b.Property<string>("ReportRecord")
-                        .IsRequired();
+                    b.Property<string>("ReportRecord");
 
                     b.Property<bool>("Rii");
 
                     b.Property<bool>("Rollout");
 
                     b.Property<int>("SignificantEventID");
-
-                    b.Property<DateTime?>("TechnicianDateSigned");
-
-                    b.Property<string>("TechnicianName");
 
                     b.Property<string>("WarningMessage1");
 

@@ -1,0 +1,226 @@
+﻿@model Discrepancy_Report_2.Models.DiscrepancyReportC
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Discrepancy Report</h4>
+    <hr />
+    <dl class="dl-horizontal col-md-12">
+        <dt style="overflow: visible; width: 25%; text-align: left;">@Html.DisplayNameFor(model => model.ReportRecord)  :  </dt><dd>@Html.DisplayFor(model => model.ReportRecord)</dd>
+        <dt style="overflow: visible; width: 25%; text-align: left;">@Html.DisplayNameFor(model => model.DateDiscovered)  :  </dt><dd>@Html.DisplayFor(model => model.DateDiscovered)</dd>
+        <dt style="overflow: visible; width: 25%; text-align: left;">@Html.DisplayNameFor(model => model.Aircraft.FaaNumber)  :  </dt><dd>@Html.DisplayFor(model => model.Aircraft.FaaNumber)</dd>
+        <dt style="overflow: visible; width: 25%; text-align: left;">@Html.DisplayNameFor(model => model.EmployeeID)  :  </dt><dd>@Html.DisplayFor(model => model.Employee.FullName)</dd>
+        <dt style="overflow: visible; width: 25%; text-align: left;">@Html.DisplayNameFor(model => model.DiscrepancyDescription)  :  </dt><dd>@Html.DisplayFor(model => model.DiscrepancyDescription)</dd>
+        <dt style="overflow: visible; width: 25%; text-align: left;">@Html.DisplayNameFor(model => model.WorkInstructionsPlannedAction)  :  </dt><dd>@Html.DisplayFor(model => model.WorkInstructionsPlannedAction)</dd>
+        <dt style="overflow: visible; width: 25%; text-align: left;">@Html.DisplayNameFor(model => model.CorrectiveActionDescription)  :  </dt><dd>@Html.DisplayFor(model => model.CorrectiveActionDescription)</dd>
+        @*<dt>
+            @Html.DisplayNameFor(model => model.ReportRecord)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ReportRecord)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DateDiscovered)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DateDiscovered)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AtaChapterEnd)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AtaChapterEnd)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.EngineStart)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.EngineStart)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.BeforeTakeoff)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.BeforeTakeoff)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.OnTakeoffRoll)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.OnTakeoffRoll)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Climb)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Climb)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Cruise)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Cruise)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Descent)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Descent)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Approach)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Approach)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Landing)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Landing)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Rollout)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Rollout)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Postflight)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Postflight)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.MasterWarning)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.MasterWarning)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.MasterCaution)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.MasterCaution)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.WarningMessage1)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.WarningMessage1)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.WarningMessage2)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.WarningMessage2)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AdvisoryMessage1)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AdvisoryMessage1)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AdvisoryMessage2)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AdvisoryMessage2)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.WarningMessageOther)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.WarningMessageOther)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DiscrepancyDescription)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DiscrepancyDescription)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AoG)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AoG)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Rii)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Rii)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.WorkInstructionsPlannedAction)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.WorkInstructionsPlannedAction)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CustomerName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CustomerName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CustomerAcceptanceDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CustomerAcceptanceDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Aircraft)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Aircraft.ID)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AtaChapter)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AtaChapter.ID)
+        </dd>*@
+        @*<dt>
+            @Html.DisplayNameFor(model => model.CorrectiveAction)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CorrectiveAction.ID)
+        </dd>*@
+        @*<dt>
+            @Html.DisplayNameFor(model => model.Employee)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Employee.ID)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Location)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Location.ID)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.MaintenanceType)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.MaintenanceType.ID)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.SignificantEvent)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SignificantEvent.ID)
+        </dd>*@
+    </dl>
+</div>
+<div class="col-md-12" style="margin-bottom: 20px;">
+    <a asp-action="Edit" asp-route-id="@Model.ID" class="btn btn-default">Edit This Report</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
+@*<div class="col-md-12" style="margin-bottom: 20px;">
+    <a asp-action="Index">Back to List</a>
+</div>*@

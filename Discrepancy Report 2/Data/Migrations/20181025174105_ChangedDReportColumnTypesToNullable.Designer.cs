@@ -11,9 +11,10 @@ using System;
 namespace Discrepancy_Report_2.Data.Migrations
 {
     [DbContext(typeof(MaintenanceDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20181025174105_ChangedDReportColumnTypesToNullable")]
+    partial class ChangedDReportColumnTypesToNullable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

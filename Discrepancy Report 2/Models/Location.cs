@@ -15,5 +15,6 @@ namespace Discrepancy_Report_2.Models
 
         //navigation property to AircraftLocationAssignment
         public ICollection<AircraftLocationAssignment> AircraftLocationAssignments { get; set; }
+        public ICollection<DiscrepancyReportC> DiscrepancyReports { get; set; }
     }
 }

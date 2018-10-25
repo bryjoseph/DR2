@@ -21,6 +21,12 @@ namespace Discrepancy_Report_2.Data
         public DbSet<AircraftModel> AircraftModels { get; set; }
         public DbSet<Title> Titles { get; set; }
         public DbSet<Employee> Employees { get; set; }
+        public DbSet<DiscrepancyReportC> DiscrepancyReportCs { get; set; }
+        public DbSet<AtaChapter> AtaChapters { get; set; }
+        public DbSet<SignificantEvent> SignificantEvents { get; set; }
+        public DbSet<MaintenanceType>MaintenanceTypes { get; set; }
+        // public DbSet<CorrectiveAction> CorrectiveActions { get; set; }
+        // public DbSet<ReferenceGroup> ReferenceGroups { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -34,6 +40,14 @@ namespace Discrepancy_Report_2.Data
             modelBuilder.Entity<AircraftModel>().ToTable("Aircraft_Model");
             modelBuilder.Entity<Title>().ToTable("Title");
             modelBuilder.Entity<Employee>().ToTable("Employee");
+            modelBuilder.Entity<DiscrepancyReportC>().ToTable("Discrepancy_Report");
+            modelBuilder.Entity<AtaChapter>().ToTable("ATA_Chapter");
+            modelBuilder.Entity<SignificantEvent>().ToTable("Significant_Event");
+            modelBuilder.Entity<MaintenanceType>().ToTable("Maintenance_Type");
+            // modelBuilder.Entity<CorrectiveAction>().ToTable("Corrective_Action");
+            // modelBuilder.Entity<ReferenceGroup>().ToTable("Reference_Group");
         }
+
+        public DbSet<Discrepancy_Report_2.Models.DiscrepancyReportC> DiscrepancyReportC { get; set; }
     }
 }

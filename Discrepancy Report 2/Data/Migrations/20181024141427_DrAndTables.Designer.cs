@@ -11,9 +11,10 @@ using System;
 namespace Discrepancy_Report_2.Data.Migrations
 {
     [DbContext(typeof(MaintenanceDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20181024141427_DrAndTables")]
+    partial class DrAndTables
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -141,6 +142,40 @@ namespace Discrepancy_Report_2.Data.Migrations
                     b.ToTable("ATA_Chapter");
                 });
 
+            modelBuilder.Entity("Discrepancy_Report_2.Models.CorrectiveAction", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("CorrectiveActionDescription");
+
+                    b.Property<int>("DiscrepancyReportCID");
+
+                    b.Property<int>("EmployeeID");
+
+                    b.Property<int>("EmployeeID1");
+
+                    b.Property<DateTime>("GovOfficialDateSigned");
+
+                    b.Property<string>("GovernmentOfficial");
+
+                    b.Property<bool>("LeakCheck");
+
+                    b.Property<DateTime>("MechanicDateSigned");
+
+                    b.Property<bool>("OpsCheckRequired");
+
+                    b.Property<DateTime>("QaDateSigned");
+
+                    b.Property<int>("ReferenceGroupID");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("EmployeeID");
+
+                    b.ToTable("CorrectiveAction");
+                });
+
             modelBuilder.Entity("Discrepancy_Report_2.Models.DiscrepancyReportC", b =>
                 {
                     b.Property<int>("ID")
@@ -168,7 +203,7 @@ namespace Discrepancy_Report_2.Data.Migrations
 
                     b.Property<bool>("Cruise");
 
-                    b.Property<DateTime?>("CustomerAcceptanceDate");
+                    b.Property<DateTime>("CustomerAcceptanceDate");
 
                     b.Property<string>("CustomerName");
 
@@ -180,9 +215,13 @@ namespace Discrepancy_Report_2.Data.Migrations
 
                     b.Property<int>("EmployeeID");
 
+                    b.Property<int>("EmployeeID1");
+
+                    b.Property<int>("EmployeeID2");
+
                     b.Property<bool>("EngineStart");
 
-                    b.Property<DateTime?>("GovOfficialDateSigned");
+                    b.Property<DateTime>("GovOfficialDateSigned");
 
                     b.Property<string>("GovernmentOfficial");
 
@@ -198,32 +237,27 @@ namespace Discrepancy_Report_2.Data.Migrations
 
                     b.Property<bool>("MasterWarning");
 
+                    b.Property<DateTime>("MechanicDateSigned");
+
                     b.Property<bool>("OnTakeoffRoll");
 
                     b.Property<bool>("OpsCheckRequired");
 
                     b.Property<bool>("Postflight");
 
-                    b.Property<DateTime?>("QaDateSigned");
-
-                    b.Property<string>("QaName");
+                    b.Property<DateTime>("QaDateSigned");
 
                     b.Property<string>("ReferenceDocument1");
 
                     b.Property<string>("ReferenceDocument2");
 
-                    b.Property<string>("ReportRecord")
-                        .IsRequired();
+                    b.Property<string>("ReportRecord");
 
                     b.Property<bool>("Rii");
 
                     b.Property<bool>("Rollout");
 
                     b.Property<int>("SignificantEventID");
-
-                    b.Property<DateTime?>("TechnicianDateSigned");
-
-                    b.Property<string>("TechnicianName");
 
                     b.Property<string>("WarningMessage1");
 
@@ -239,7 +273,8 @@ namespace Discrepancy_Report_2.Data.Migrations
 
                     b.HasIndex("AtaChapterID");
 
-                    b.HasIndex("EmployeeID");
+                    b.HasIndex("EmployeeID")
+                        .IsUnique();
 
                     b.HasIndex("LocationID");
 
@@ -451,35 +486,43 @@ namespace Discrepancy_Report_2.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
+            modelBuilder.Entity("Discrepancy_Report_2.Models.CorrectiveAction", b =>
+                {
+                    b.HasOne("Discrepancy_Report_2.Models.Employee")
+                        .WithMany("CorrectiveActions")
+                        .HasForeignKey("EmployeeID")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
             modelBuilder.Entity("Discrepancy_Report_2.Models.DiscrepancyReportC", b =>
                 {
                     b.HasOne("Discrepancy_Report_2.Models.Aircraft", "Aircraft")
-                        .WithMany("DiscrepancyReports")
+                        .WithMany()
                         .HasForeignKey("AircraftID")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("Discrepancy_Report_2.Models.AtaChapter", "AtaChapter")
-                        .WithMany("DiscrepancyReports")
+                        .WithMany("DiscrepancyReportCs")
                         .HasForeignKey("AtaChapterID")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("Discrepancy_Report_2.Models.Employee", "Employee")
-                        .WithMany("DiscrepancyReports")
-                        .HasForeignKey("EmployeeID")
+                        .WithOne("DiscrepancyReportC")
+                        .HasForeignKey("Discrepancy_Report_2.Models.DiscrepancyReportC", "EmployeeID")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("Discrepancy_Report_2.Models.Location", "Location")
-                        .WithMany("DiscrepancyReports")
+                        .WithMany()
                         .HasForeignKey("LocationID")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("Discrepancy_Report_2.Models.MaintenanceType", "MaintenanceType")
-                        .WithMany("DiscrepancyReports")
+                        .WithMany("DiscrepancyReportCs")
                         .HasForeignKey("MaintenanceTypeID")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("Discrepancy_Report_2.Models.SignificantEvent", "SignificantEvent")
-                        .WithMany("DiscrepancyReports")
+                        .WithMany("DiscrepancyReportCs")
                         .HasForeignKey("SignificantEventID")
                         .OnDelete(DeleteBehavior.Cascade);
                 });

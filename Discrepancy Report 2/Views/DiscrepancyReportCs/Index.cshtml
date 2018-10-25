@@ -1,0 +1,72 @@
+﻿@model IEnumerable<Discrepancy_Report_2.Models.DiscrepancyReportC>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Discrepancy Reports</h2>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary" role="button">Create New</a>
+</p>
+
+<!--SearchBox-->
+<form asp-action="Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            <input type="text" name="searchString" value="@ViewData["CurrentSearchFilter"]" />
+            <input type="submit" value="Search" class="btn btn-default" /> |
+            <a style="text-decoration:none; color:black" asp-action="Index">Back To Full List</a>
+        </p>
+    </div>
+</form>
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th style="width:15%";>
+                <span class="glyphicon glyphicon-triangle-bottom" style="font-size: 8px;"></span>
+                <a style="text-decoration:none; color:black" asp-action="Index" asp-route-sortOrder="@ViewData["ReportRecordSortParm"]">@Html.DisplayNameFor(model => model.ReportRecord)</a>
+                <span class="glyphicon glyphicon-triangle-top" style="font-size: 8px;"></span>
+            </th>
+            <th style="width:15%">
+                <span class="glyphicon glyphicon-triangle-bottom" style="font-size: 8px;"></span>
+                <a style="text-decoration:none; color:black" asp-action="Index" asp-route-sortOrder="@ViewData["DateDiscoveredSortParm"]">@Html.DisplayNameFor(model => model.DateDiscovered)</a>
+                <span class="glyphicon glyphicon-triangle-top" style="font-size: 8px;"></span>
+            </th>
+            <th style="width:15%">
+                <span class="glyphicon glyphicon-triangle-bottom" style="font-size: 8px;"></span>
+                <a style="text-decoration:none; color:black" asp-action="Index" asp-route-sortOrder="@ViewData["LocationSortParm"]">@Html.DisplayNameFor(model => model.Location)</a>
+                <span class="glyphicon glyphicon-triangle-top" style="font-size: 8px;"></span>
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DiscrepancyDescription)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ReportRecord)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateDiscovered)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Location.LocationCode)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DiscrepancyDescription)
+                </td>
+                <td style="width:15%">
+                    <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

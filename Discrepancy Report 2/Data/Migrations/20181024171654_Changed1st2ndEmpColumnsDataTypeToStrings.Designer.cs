@@ -11,9 +11,10 @@ using System;
 namespace Discrepancy_Report_2.Data.Migrations
 {
     [DbContext(typeof(MaintenanceDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20181024171654_Changed1st2ndEmpColumnsDataTypeToStrings")]
+    partial class Changed1st2ndEmpColumnsDataTypeToStrings
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -168,7 +169,7 @@ namespace Discrepancy_Report_2.Data.Migrations
 
                     b.Property<bool>("Cruise");
 
-                    b.Property<DateTime?>("CustomerAcceptanceDate");
+                    b.Property<DateTime>("CustomerAcceptanceDate");
 
                     b.Property<string>("CustomerName");
 
@@ -182,7 +183,7 @@ namespace Discrepancy_Report_2.Data.Migrations
 
                     b.Property<bool>("EngineStart");
 
-                    b.Property<DateTime?>("GovOfficialDateSigned");
+                    b.Property<DateTime>("GovOfficialDateSigned");
 
                     b.Property<string>("GovernmentOfficial");
 
@@ -204,7 +205,7 @@ namespace Discrepancy_Report_2.Data.Migrations
 
                     b.Property<bool>("Postflight");
 
-                    b.Property<DateTime?>("QaDateSigned");
+                    b.Property<DateTime>("QaDateSigned");
 
                     b.Property<string>("QaName");
 
@@ -212,8 +213,7 @@ namespace Discrepancy_Report_2.Data.Migrations
 
                     b.Property<string>("ReferenceDocument2");
 
-                    b.Property<string>("ReportRecord")
-                        .IsRequired();
+                    b.Property<string>("ReportRecord");
 
                     b.Property<bool>("Rii");
 
@@ -221,7 +221,7 @@ namespace Discrepancy_Report_2.Data.Migrations
 
                     b.Property<int>("SignificantEventID");
 
-                    b.Property<DateTime?>("TechnicianDateSigned");
+                    b.Property<DateTime>("TechnicianDateSigned");
 
                     b.Property<string>("TechnicianName");
 

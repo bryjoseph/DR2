@@ -1,0 +1,474 @@
+﻿@model Discrepancy_Report_2.Models.DiscrepancyReportC
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Create</h2>
+
+<h4>Discrepancy Report</h4>
+<hr />
+
+<div class="col-md-12">
+    <section>
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="col-md-4">
+                <label asp-for="ReportRecord" class="control-label"></label>
+                <input asp-for="ReportRecord" class="form-control" />
+                <span asp-validation-for="ReportRecord" class="text-danger"></span>
+            </div>
+            <div class="col-md-4">
+                <label asp-for="AircraftID" class="control-label"></label>
+                <select asp-for="AircraftID" class="form-control" asp-items="ViewBag.Aircrafts">
+                    <option value="">--Select Aircraft By FAA Number--</option>
+                </select>
+                <span asp-validation-for="AircraftID" class="text-danger"></span>
+            </div>
+            <div class="col-md-4">
+                <label asp-for="EmployeeID" class="control-label"></label>
+                <select asp-for="EmployeeID" class="form-control" asp-items="ViewBag.Employees">
+                    <option value="">--Select Employee--</option>
+                </select>
+                <span asp-validation-for="EmployeeID" class="text-danger"></span>
+            </div>
+            <div class="col-md-6">
+                <label asp-for="DateDiscovered" class="control-label"></label>
+                <input asp-for="DateDiscovered" class="form-control" />
+                <span asp-validation-for="DateDiscovered" class="text-danger"></span>
+            </div>
+            <div class="col-md-6">
+                <label asp-for="LocationID" class="control-label"></label>
+                <select asp-for="LocationID" class="form-control" asp-items="ViewBag.Locations">
+                    <option value="">--Select Location--</option>
+                </select>
+                <span asp-validation-for="LocationID" class="text-danger"></span>
+            </div>
+            <div class="col-md-6">
+                <label asp-for="AtaChapterID" class="control-label"></label>
+                <select asp-for="AtaChapterID" class="form-control" asp-items="ViewBag.AtaChapters">
+                    <option value="">--Select ATA Chapter--</option>
+                </select>
+                <span asp-validation-for="AtaChapterID" class="text-danger"></span>
+            </div>
+            <div class="col-md-6">
+                <label asp-for="AtaChapterEnd" class="control-label"></label>
+                <input asp-for="AtaChapterEnd" class="form-control" />
+                <span asp-validation-for="AtaChapterEnd" class="text-danger"></span>
+            </div>
+            <div class="col-md-6">
+                <label asp-for="SignificantEventID" class="control-label"></label>
+                <select asp-for="SignificantEventID" class="form-control" asp-items="ViewBag.SigEvents">
+                    <option value="">--Select the Type of Event--</option>
+                </select>
+            </div>
+            <div class="col-md-6">
+                <label asp-for="MaintenanceTypeID" class="control-label"></label>
+                <select asp-for="MaintenanceTypeID" class="form-control" asp-items="ViewBag.MaintTypes">
+                    <option value="">--Select Maintenance Type--</option>
+                </select>
+            </div>
+            <div class="col-md-12">
+                <label asp-for="DiscrepancyDescription" class="control-label"></label>
+                <textarea asp-for="DiscrepancyDescription" class="form-control" rows="4"></textarea>
+                <span asp-validation-for="DiscrepancyDescription" class="text-danger"></span>
+            </div>
+            <div class="form-group col-md-offset-1">
+                <h5 class="col-md-1" style="text-align:right; font-weight: bold; margin-top: 2px; ">RII?</h5>
+                <div class="checkbox col-md-2" style="margin-top:0px">
+                    <label>
+                        <input asp-for="Rii" /> @Html.DisplayNameFor(model => model.Rii)
+                    </label>
+                </div>
+                <h5 class="col-md-1" style="text-align:right; font-weight: bold; margin-top: 2px;">AOG?</h5>
+                <div class="checkbox col-md-2" style="margin-top:0px">
+                    <label>
+                        <input asp-for="AoG" /> @Html.DisplayNameFor(model => model.AoG)
+                    </label>
+                </div>
+            </div>
+            <h4 class="col-md-12" style="text-align:left; padding-top: 20px">Check All That Apply</h4>
+            <div class="form-group col-md-offset-1">
+                <div class="checkbox col-md-3">
+                    <label>
+                        <input asp-for="EngineStart" /> @Html.DisplayNameFor(model => model.EngineStart)
+                    </label>
+                </div>
+                <div class="checkbox col-md-3" style="margin-top:10px;">
+                    <label>
+                        <input asp-for="BeforeTakeoff" /> @Html.DisplayNameFor(model => model.BeforeTakeoff)
+                    </label>
+                </div>
+                <div class="checkbox col-md-3" style="margin-top:10px;">
+                    <label>
+                        <input asp-for="OnTakeoffRoll" /> @Html.DisplayNameFor(model => model.OnTakeoffRoll)
+                    </label>
+                </div>
+                <div class="checkbox col-md-3" style="margin-top:10px;">
+                    <label>
+                        <input asp-for="Climb" /> @Html.DisplayNameFor(model => model.Climb)
+                    </label>
+                </div>
+                <div class="checkbox col-md-3" style="margin-top:10px;">
+                    <label>
+                        <input asp-for="Cruise" /> @Html.DisplayNameFor(model => model.Cruise)
+                    </label>
+                </div>
+                <div class="checkbox col-md-3" style="margin-top:10px;">
+                    <label>
+                        <input asp-for="Descent" /> @Html.DisplayNameFor(model => model.Descent)
+                    </label>
+                </div>
+                <div class="checkbox col-md-3" style="margin-top:10px;">
+                    <label>
+                        <input asp-for="Approach" /> @Html.DisplayNameFor(model => model.Approach)
+                    </label>
+                </div>
+                <div class="checkbox col-md-3" style="margin-top:10px;">
+                    <label>
+                        <input asp-for="Landing" /> @Html.DisplayNameFor(model => model.Landing)
+                    </label>
+                </div>
+                <div class="checkbox col-md-3" style="margin-top:10px;">
+                    <label>
+                        <input asp-for="Rollout" /> @Html.DisplayNameFor(model => model.Rollout)
+                    </label>
+                </div>
+                <div class="checkbox col-md-3" style="margin-top:10px;">
+                    <label>
+                        <input asp-for="Postflight" /> @Html.DisplayNameFor(model => model.Postflight)
+                    </label>
+                </div>
+            </div>
+            <h4 class="col-md-12" style="text-align:left; padding-top: 20px">Flight Deck Effects</h4>
+            <div class="form-group col-md-offset-1">
+                <div class="checkbox col-md-3">
+                    <label>
+                        <input asp-for="MasterWarning" /> @Html.DisplayNameFor(model => model.MasterWarning)
+                    </label>
+                </div>
+                <div class="checkbox col-md-6" style="margin-top:10px;">
+                    <label>
+                        <input asp-for="MasterCaution" /> @Html.DisplayNameFor(model => model.MasterCaution)
+                    </label>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <label asp-for="WarningMessage1" class="control-label"></label>
+                <input asp-for="WarningMessage1" class="form-control" />
+                <span asp-validation-for="WarningMessage1" class="text-danger"></span>
+            </div>
+            <div class="col-md-4">
+                <label asp-for="WarningMessage2" class="control-label"></label>
+                <input asp-for="WarningMessage2" class="form-control" />
+                <span asp-validation-for="WarningMessage2" class="text-danger"></span>
+            </div>
+            <div class="col-md-4">
+                <label asp-for="AdvisoryMessage1" class="control-label"></label>
+                <input asp-for="AdvisoryMessage1" class="form-control" />
+                <span asp-validation-for="AdvisoryMessage1" class="text-danger"></span>
+            </div>
+            <div class="col-md-4">
+                <label asp-for="AdvisoryMessage2" class="control-label"></label>
+                <input asp-for="AdvisoryMessage2" class="form-control" />
+                <span asp-validation-for="AdvisoryMessage2" class="text-danger"></span>
+            </div>
+            <div class="col-md-8">
+                <label asp-for="WarningMessageOther" class="control-label"></label>
+                <input asp-for="WarningMessageOther" class="form-control" />
+                <span asp-validation-for="WarningMessageOther" class="text-danger"></span>
+            </div>
+            <div class="col-md-12">
+                <label asp-for="WorkInstructionsPlannedAction" class="control-label"></label>
+                <textarea asp-for="WorkInstructionsPlannedAction" class="form-control" rows="4"></textarea>
+                <span asp-validation-for="WorkInstructionsPlannedAction" class="text-danger"></span>
+            </div>
+            <div class="col-md-8">
+                <label asp-for="CorrectiveActionDescription" class="control-label"></label>
+                <textarea asp-for="CorrectiveActionDescription" class="form-control" rows="16"></textarea>
+                <span asp-validation-for="CorrectiveActionDescription" class="text-danger"></span>
+            </div>
+            <div class="col-md-4">
+                <label asp-for="TechnicianName" class="control-label"></label>
+                <input asp-for="TechnicianName" class="form-control" />
+                <span asp-validation-for="TechnicianName" class="text-danger"></span>
+            </div>
+            <div class="col-md-4">
+                <label asp-for="TechnicianDateSigned" class="control-label"></label>
+                <input asp-for="TechnicianDateSigned" class="form-control" />
+                <span asp-validation-for="TechnicianDateSigned" class="text-danger"></span>
+            </div>
+            <div class="col-md-4">
+                <label asp-for="QaName" class="control-label"></label>
+                <input asp-for="QaName" class="form-control" />
+                <span asp-validation-for="QaName" class="text-danger"></span>
+            </div>
+            <div class="col-md-4">
+                <label asp-for="QaDateSigned" class="control-label"></label>
+                <input asp-for="QaDateSigned" class="form-control" />
+                <span asp-validation-for="QaDateSigned" class="text-danger"></span>
+            </div>
+            <div class="col-md-4">
+                <label asp-for="GovernmentOfficial" class="control-label"></label>
+                <input asp-for="GovernmentOfficial" class="form-control" />
+                <span asp-validation-for="GovernmentOfficial" class="text-danger"></span>
+            </div>
+            <div class="col-md-4">
+                <label asp-for="GovOfficialDateSigned" class="control-label"></label>
+                <input asp-for="GovOfficialDateSigned" class="form-control" />
+                <span asp-validation-for="GovOfficialDateSigned" class="text-danger"></span>
+            </div>
+            <div class="form-group col-md-12">
+                <h5 class="col-md-2" style="text-align:right; font-weight: bold; margin-top: 2px; ">OPS Check Req'd</h5>
+                <div class="checkbox col-md-2" style="margin-top:0px;">
+                    <label>
+                        <input asp-for="OpsCheckRequired" /> @Html.DisplayNameFor(model => model.OpsCheckRequired)
+                    </label>
+                </div>
+                <h5 class="col-md-2" style="text-align:right; font-weight: bold; margin-top: 2px;">Leak Check Req'd</h5>
+                <div class="checkbox col-md-2" style="margin-top:0px">
+                    <label>
+                        <input asp-for="LeakCheck" /> @Html.DisplayNameFor(model => model.LeakCheck)
+                    </label>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <label asp-for="ReferenceDocument1" class="control-label"></label>
+                <input asp-for="ReferenceDocument1" class="form-control" />
+                <span asp-validation-for="ReferenceDocument1" class="text-danger"></span>
+            </div>
+            <div class="col-md-6">
+                <label asp-for="ReferenceDocument2" class="control-label"></label>
+                <input asp-for="ReferenceDocument2" class="form-control" />
+                <span asp-validation-for="ReferenceDocument2" class="text-danger"></span>
+            </div>
+            <div class="col-md-6">
+                <label asp-for="CustomerName" class="control-label"></label>
+                <input asp-for="CustomerName" class="form-control" />
+                <span asp-validation-for="CustomerName" class="text-danger"></span>
+            </div>
+            <div class="col-md-6">
+                <label asp-for="CustomerAcceptanceDate" class="control-label"></label>
+                <input asp-for="CustomerAcceptanceDate" class="form-control" />
+                <span asp-validation-for="CustomerAcceptanceDate" class="text-danger"></span>
+            </div>
+            <div class="col-md-12" style="margin-top: 20px;">
+                <input type="submit" value="Create" class="btn btn-default" /> |
+                <a asp-action="Index">Back to List</a>
+            </div>
+            @*<div class="col-md-12" style="margin-top: 20px;">
+                <a asp-action="Index">Back to List</a>
+            </div>*@
+        </form>
+        <div class="col-md-12" style="margin-top: 20px;">
+            @section Scripts {
+                @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+            }
+        </div>
+    </section>
+</div>
+
+@*<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>*@
+            @*<div class="form-group">
+                <label asp-for="ReportRecord" class="control-label"></label>
+                <input asp-for="ReportRecord" class="form-control" />
+                <span asp-validation-for="ReportRecord" class="text-danger"></span>
+            </div>*@
+            @*<div class="form-group">
+                <label asp-for="AircraftID" class="control-label"></label>
+                <select asp-for="AircraftID" class ="form-control" asp-items="ViewBag.AircraftID"></select>
+            </div>*@
+            @*<div class="form-group">
+                <label asp-for="EmployeeID" class="control-label"></label>
+                <select asp-for="EmployeeID" class ="form-control" asp-items="ViewBag.EmployeeID"></select>
+            </div>*@
+            @*<div class="form-group">
+                <label asp-for="DateDiscovered" class="control-label"></label>
+                <input asp-for="DateDiscovered" class="form-control" />
+                <span asp-validation-for="DateDiscovered" class="text-danger"></span>
+            </div>*@
+            @*<div class="form-group">
+                <label asp-for="LocationID" class="control-label"></label>
+                <select asp-for="LocationID" class ="form-control" asp-items="ViewBag.LocationID"></select>
+            </div>*@
+            @*<div class="form-group">
+                <label asp-for="AtaChapterID" class="control-label"></label>
+                <select asp-for="AtaChapterID" class ="form-control" asp-items="ViewBag.AtaChapterID"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="AtaChapterEnd" class="control-label"></label>
+                <input asp-for="AtaChapterEnd" class="form-control" />
+                <span asp-validation-for="AtaChapterEnd" class="text-danger"></span>
+            </div>*@
+            @*<div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="EngineStart" /> @Html.DisplayNameFor(model => model.EngineStart)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="BeforeTakeoff" /> @Html.DisplayNameFor(model => model.BeforeTakeoff)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="OnTakeoffRoll" /> @Html.DisplayNameFor(model => model.OnTakeoffRoll)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="Climb" /> @Html.DisplayNameFor(model => model.Climb)
+                    </label>
+                </div>
+            </div>*@
+            @*<div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="Cruise" /> @Html.DisplayNameFor(model => model.Cruise)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="Descent" /> @Html.DisplayNameFor(model => model.Descent)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="Approach" /> @Html.DisplayNameFor(model => model.Approach)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="Landing" /> @Html.DisplayNameFor(model => model.Landing)
+                    </label>
+                </div>
+            </div>*@
+            @*<div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="Rollout" /> @Html.DisplayNameFor(model => model.Rollout)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="Postflight" /> @Html.DisplayNameFor(model => model.Postflight)
+                    </label>
+                </div>
+            </div>*@
+            @*<div class="form-group">
+                <label asp-for="SignificantEventID" class="control-label"></label>
+                <select asp-for="SignificantEventID" class ="form-control" asp-items="ViewBag.SignificantEventID"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="MaintenanceTypeID" class="control-label"></label>
+                <select asp-for="MaintenanceTypeID" class ="form-control" asp-items="ViewBag.MaintenanceTypeID"></select>
+            </div>*@
+            @*<div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="MasterWarning" /> @Html.DisplayNameFor(model => model.MasterWarning)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="MasterCaution" /> @Html.DisplayNameFor(model => model.MasterCaution)
+                    </label>
+                </div>
+            </div>*@
+            @*<div class="form-group">
+                <label asp-for="WarningMessage1" class="control-label"></label>
+                <input asp-for="WarningMessage1" class="form-control" />
+                <span asp-validation-for="WarningMessage1" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WarningMessage2" class="control-label"></label>
+                <input asp-for="WarningMessage2" class="form-control" />
+                <span asp-validation-for="WarningMessage2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AdvisoryMessage1" class="control-label"></label>
+                <input asp-for="AdvisoryMessage1" class="form-control" />
+                <span asp-validation-for="AdvisoryMessage1" class="text-danger"></span>
+            </div>*@
+            @*<div class="form-group">
+                <label asp-for="AdvisoryMessage2" class="control-label"></label>
+                <input asp-for="AdvisoryMessage2" class="form-control" />
+                <span asp-validation-for="AdvisoryMessage2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WarningMessageOther" class="control-label"></label>
+                <input asp-for="WarningMessageOther" class="form-control" />
+                <span asp-validation-for="WarningMessageOther" class="text-danger"></span>
+            </div>*@
+            @*<div class="form-group">
+                <label asp-for="DiscrepancyDescription" class="control-label"></label>
+                <input asp-for="DiscrepancyDescription" class="form-control" />
+                <span asp-validation-for="DiscrepancyDescription" class="text-danger"></span>
+            </div>*@
+            @*<div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="AoG" /> @Html.DisplayNameFor(model => model.AoG)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="Rii" /> @Html.DisplayNameFor(model => model.Rii)
+                    </label>
+                </div>
+            </div>*@
+            @*<div class="form-group">
+                <label asp-for="WorkInstructionsPlannedAction" class="control-label"></label>
+                <input asp-for="WorkInstructionsPlannedAction" class="form-control" />
+                <span asp-validation-for="WorkInstructionsPlannedAction" class="text-danger"></span>
+            </div>*@
+            @*<div class="form-group">
+                <label asp-for="CorrectiveActionID" class="control-label"></label>
+                <select asp-for="CorrectiveActionID" class ="form-control" asp-items="ViewBag.CorrectiveActionID"></select>
+            </div>*@
+            @*<div class="form-group">
+                <label asp-for="CustomerName" class="control-label"></label>
+                <input asp-for="CustomerName" class="form-control" />
+                <span asp-validation-for="CustomerName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CustomerAcceptanceDate" class="control-label"></label>
+                <input asp-for="CustomerAcceptanceDate" class="form-control" />
+                <span asp-validation-for="CustomerAcceptanceDate" class="text-danger"></span>
+            </div>*@
+            @*<div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>*@
+        @*</form>
+    </div>
+</div>*@
+
+@*<div>
+    <a asp-action="Index">Back to List</a>
+</div>*@
+
+@*@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}*@
