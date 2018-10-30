@@ -5,11 +5,13 @@
 }
 
 <h2>Available Aircraft</h2>
-
 <p>
-    <a asp-action="Create" class="btn btn-primary" role="button">Create New</a>
+    <a asp-action="Create" class="btn btn-primary" role="button">
+        <span class="glyphicon glyphicon-plus"></span>
+        &nbsp; Create New
+    </a>
 </p>
-
+<br />
 <!--SearchBox-->
 <form asp-action="Index" method="get">
     <div class="form-actions no-color">
@@ -65,10 +67,11 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.AircraftModel.Manufacturer)
                 </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.ID">Edit Aircraft</a> |
+                <td style="width: 15%">
+                    @Html.Partial("_TableButtonPartial", item.ID)
+                    @*<a asp-action="Edit" asp-route-id="@item.ID">Edit Aircraft</a> |
                     <a asp-action="Details" asp-route-id="@item.ID">Details of Aircraft</a> |
-                    <a asp-action="Delete" asp-route-id="@item.ID">Delete Aircraft</a>
+                    <a asp-action="Delete" asp-route-id="@item.ID">Delete Aircraft</a>*@
                 </td>
             </tr>
         }

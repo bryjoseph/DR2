@@ -11,9 +11,10 @@ using System;
 namespace Discrepancy_Report_2.Data.Migrations
 {
     [DbContext(typeof(MaintenanceDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20181029212358_RemovedFKOnInstallRemovalForm")]
+    partial class RemovedFKOnInstallRemovalForm
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -317,8 +318,6 @@ namespace Discrepancy_Report_2.Data.Migrations
 
                     b.Property<int>("DiscrepancyReportCID");
 
-                    b.Property<int>("EmployeeID");
-
                     b.Property<string>("FiledBy");
 
                     b.Property<string>("InspectedBy");
@@ -366,8 +365,6 @@ namespace Discrepancy_Report_2.Data.Migrations
                     b.HasKey("ID");
 
                     b.HasIndex("DiscrepancyReportCID");
-
-                    b.HasIndex("EmployeeID");
 
                     b.ToTable("Removal_Installation_Form");
                 });
@@ -571,11 +568,6 @@ namespace Discrepancy_Report_2.Data.Migrations
                     b.HasOne("Discrepancy_Report_2.Models.DiscrepancyReportC", "DiscrepancyReportC")
                         .WithMany("RemovalInstallationForms")
                         .HasForeignKey("DiscrepancyReportCID")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("Discrepancy_Report_2.Models.Employee", "Employee")
-                        .WithMany("RemovalInstallationForms")
-                        .HasForeignKey("EmployeeID")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

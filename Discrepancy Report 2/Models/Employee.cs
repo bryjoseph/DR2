@@ -27,5 +27,6 @@ namespace Discrepancy_Report_2.Models
         // public ICollection<CorrectiveAction> CorrectiveActions { get; set; }
         public ICollection<DiscrepancyReportC> DiscrepancyReports { get; set; }
         // public ICollection<DiscrepancyAssignment> DiscrepancyAssignments { get; set; }
+        public ICollection<RemovalInstallationForm> RemovalInstallationForms { get; set; }
     }
 }

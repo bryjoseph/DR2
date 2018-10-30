@@ -384,7 +384,7 @@ namespace Discrepancy_Report_2.Controllers
         
         private bool DiscrepancyReportCExists(int id)
         {
-            return _context.DiscrepancyReportC.Any(e => e.ID == id);
+            return _context.DiscrepancyReportCs.Any(e => e.ID == id);
         }
     }
 }

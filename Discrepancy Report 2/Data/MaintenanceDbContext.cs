@@ -25,8 +25,7 @@ namespace Discrepancy_Report_2.Data
         public DbSet<AtaChapter> AtaChapters { get; set; }
         public DbSet<SignificantEvent> SignificantEvents { get; set; }
         public DbSet<MaintenanceType>MaintenanceTypes { get; set; }
-        // public DbSet<CorrectiveAction> CorrectiveActions { get; set; }
-        // public DbSet<ReferenceGroup> ReferenceGroups { get; set; }
+        public DbSet<RemovalInstallationForm> RemovalInstallationForms { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -44,10 +43,9 @@ namespace Discrepancy_Report_2.Data
             modelBuilder.Entity<AtaChapter>().ToTable("ATA_Chapter");
             modelBuilder.Entity<SignificantEvent>().ToTable("Significant_Event");
             modelBuilder.Entity<MaintenanceType>().ToTable("Maintenance_Type");
+            modelBuilder.Entity<RemovalInstallationForm>().ToTable("Removal_Installation_Form");
             // modelBuilder.Entity<CorrectiveAction>().ToTable("Corrective_Action");
             // modelBuilder.Entity<ReferenceGroup>().ToTable("Reference_Group");
         }
-
-        public DbSet<Discrepancy_Report_2.Models.DiscrepancyReportC> DiscrepancyReportC { get; set; }
     }
 }

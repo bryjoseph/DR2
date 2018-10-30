@@ -164,6 +164,7 @@ namespace Discrepancy_Report_2.Models
         public AtaChapter AtaChapter { get; set; }
         public SignificantEvent SignificantEvent { get; set; }
         public MaintenanceType MaintenanceType { get; set; }
+        public ICollection<RemovalInstallationForm> RemovalInstallationForms { get; set; }
         // public ICollection<DiscrepancyAssignment> DiscrepancyAssignments { get; set; }
         // public CorrectiveAction CorrectiveAction { get; set; } adding this data to the DR
         // public RemovalInstallationForm RemovalInstallationForm { get; set; }

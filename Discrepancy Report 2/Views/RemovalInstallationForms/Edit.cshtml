@@ -1,0 +1,188 @@
+﻿@model Discrepancy_Report_2.Models.RemovalInstallationForm
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edit</h2>
+
+<h4>Removal and Installation Form</h4>
+<hr />
+
+<div class="col-md-12">
+    <section>
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="col-md-12" style="padding-left: 0px;">
+                <div class="col-md-4">
+                    <label asp-for="DiscrepancyReportCID" class="control-label"></label>
+                    <select asp-for="DiscrepancyReportCID" class="form-control" asp-items="ViewBag.Reports">
+                        <option value="">--Select Corresponding Discrepancy Report--</option>
+                    </select>
+                    <span asp-validation-for="DiscrepancyReportCID" class="text-danger"></span>
+                </div>
+                <div class="col-md-4">
+                    <label asp-for="DateFormCreated" class="control-label"></label>
+                    <input asp-for="DateFormCreated" class="form-control" />
+                    <span asp-validation-for="DateFormCreated" class="text-danger"></span>
+                </div>
+                <div class="col-md-4">
+                    <label asp-for="EmployeeID" class="control-label"></label>
+                    <select asp-for="EmployeeID" class="form-control" asp-items="ViewBag.Employees">
+                        <option value="">--Select an Employee--</option>
+                    </select>
+                    <span asp-validation-for="EmployeeID" class="text-danger"></span>
+                </div>
+            </div>
+            <h4 class="col-md-12" style="margin-top: 30px; margin-bottom: 10px; padding-left: 0px;">Removal Section</h4>
+            <div class="input-group col-md-offset-1">
+                <div class="col-md-4" style="margin-top: 20px;">
+                    <label asp-for="RemovedPartNumber1" class="control-label"></label>
+                    <input asp-for="RemovedPartNumber1" class="form-control" />
+                    <span asp-validation-for="RemovedPartNumber1" class="text-danger"></span>
+                </div>
+                <div class="col-md-4" style="margin-top: 20px;">
+                    <label asp-for="RemovedPartSerialNumber1" class="control-label"></label>
+                    <input asp-for="RemovedPartSerialNumber1" class="form-control" />
+                    <span asp-validation-for="RemovedPartSerialNumber1" class="text-danger"></span>
+                </div>
+                <div class="col-md-3" style="margin-top: 20px;">
+                    <label asp-for="NomenclaturePart1" class="control-label"></label>
+                    <input asp-for="NomenclaturePart1" class="form-control" />
+                    <span asp-validation-for="NomenclaturePart1" class="text-danger"></span>
+                </div>
+                <div class="col-md-4" style="margin-top: 10px;">
+                    <label asp-for="RemovedPartNumber2" class="control-label"></label>
+                    <input asp-for="RemovedPartNumber2" class="form-control" />
+                    <span asp-validation-for="RemovedPartNumber2" class="text-danger"></span>
+                </div>
+                <div class="col-md-4" style="margin-top: 10px;">
+                    <label asp-for="RemovedPartSerialNumber2" class="control-label"></label>
+                    <input asp-for="RemovedPartSerialNumber2" class="form-control" />
+                    <span asp-validation-for="RemovedPartSerialNumber2" class="text-danger"></span>
+                </div>
+                <div class="col-md-3" style="margin-top: 10px;">
+                    <label asp-for="NomenclaturePart2" class="control-label"></label>
+                    <input asp-for="NomenclaturePart2" class="form-control" />
+                    <span asp-validation-for="NomenclaturePart2" class="text-danger"></span>
+                </div>
+                <div class="col-md-4" style="margin-top: 10px;">
+                    <label asp-for="RemovedPartNumber3" class="control-label"></label>
+                    <input asp-for="RemovedPartNumber3" class="form-control" />
+                    <span asp-validation-for="RemovedPartNumber3" class="text-danger"></span>
+                </div>
+                <div class="col-md-4" style="margin-top: 10px;">
+                    <label asp-for="RemovedPartSerialNumber3" class="control-label"></label>
+                    <input asp-for="RemovedPartSerialNumber3" class="form-control" />
+                    <span asp-validation-for="RemovedPartSerialNumber3" class="text-danger"></span>
+                </div>
+                <div class="col-md-3" style="margin-top: 10px;">
+                    <label asp-for="NomenclaturePart3" class="control-label"></label>
+                    <input asp-for="NomenclaturePart3" class="form-control" />
+                    <span asp-validation-for="NomenclaturePart3" class="text-danger"></span>
+                </div>
+                <div class="col-md-4" style="margin-top: 10px;">
+                    <label asp-for="RemovedPartNumber4" class="control-label"></label>
+                    <input asp-for="RemovedPartNumber4" class="form-control" />
+                    <span asp-validation-for="RemovedPartNumber4" class="text-danger"></span>
+                </div>
+                <div class="col-md-4" style="margin-top: 10px;">
+                    <label asp-for="RemovedPartSerialNumber4" class="control-label"></label>
+                    <input asp-for="RemovedPartSerialNumber4" class="form-control" />
+                    <span asp-validation-for="RemovedPartSerialNumber4" class="text-danger"></span>
+                </div>
+                <div class="col-md-3" style="margin-top: 10px;">
+                    <label asp-for="NomenclaturePart4" class="control-label"></label>
+                    <input asp-for="NomenclaturePart4" class="form-control" />
+                    <span asp-validation-for="NomenclaturePart4" class="text-danger"></span>
+                </div>
+            </div>
+            <h4 class="col-md-12" style="margin-top: 30px; margin-bottom: 10px; padding-left: 0px;">Installation Section</h4>
+            <div class="input-group col-md-offset-1">
+                <div class="col-md-6" style="margin-top: 20px;">
+                    <label asp-for="InstalledPartNumber1" class="control-label"></label>
+                    <input asp-for="InstalledPartNumber1" class="form-control" />
+                    <span asp-validation-for="InstalledPartNumber1" class="text-danger"></span>
+                </div>
+                <div class="col-md-5" style="margin-top: 20px;">
+                    <label asp-for="InstalledPartSerialNumber1" class="control-label"></label>
+                    <input asp-for="InstalledPartSerialNumber1" class="form-control" />
+                    <span asp-validation-for="InstalledPartSerialNumber1" class="text-danger"></span>
+                </div>
+                <div class="col-md-6" style="margin-top: 10px;">
+                    <label asp-for="InstalledPartNumber2" class="control-label"></label>
+                    <input asp-for="InstalledPartNumber2" class="form-control" />
+                    <span asp-validation-for="InstalledPartNumber2" class="text-danger"></span>
+                </div>
+                <div class="col-md-5" style="margin-top: 10px;">
+                    <label asp-for="InstalledPartSerialNumber2" class="control-label"></label>
+                    <input asp-for="InstalledPartSerialNumber2" class="form-control" />
+                    <span asp-validation-for="InstalledPartSerialNumber2" class="text-danger"></span>
+                </div>
+                <div class="col-md-6" style="margin-top: 10px;">
+                    <label asp-for="InstalledPartNumber3" class="control-label"></label>
+                    <input asp-for="InstalledPartNumber3" class="form-control" />
+                    <span asp-validation-for="InstalledPartNumber3" class="text-danger"></span>
+                </div>
+                <div class="col-md-5" style="margin-top: 10px;">
+                    <label asp-for="InstalledPartSerialNumber3" class="control-label"></label>
+                    <input asp-for="InstalledPartSerialNumber3" class="form-control" />
+                    <span asp-validation-for="InstalledPartSerialNumber3" class="text-danger"></span>
+                </div>
+                <div class="col-md-6" style="margin-top: 10px;">
+                    <label asp-for="InstalledPartNumber4" class="control-label"></label>
+                    <input asp-for="InstalledPartNumber4" class="form-control" />
+                    <span asp-validation-for="InstalledPartNumber4" class="text-danger"></span>
+                </div>
+                <div class="col-md-5" style="margin-top: 10px;">
+                    <label asp-for="InstalledPartSerialNumber4" class="control-label"></label>
+                    <input asp-for="InstalledPartSerialNumber4" class="form-control" />
+                    <span asp-validation-for="InstalledPartSerialNumber4" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-12" style="margin-top: 30px; border-bottom: 2px solid grey; padding-left: 0px;"></div>
+            <div class="col-md-12" style="margin-top: 20px; padding-left: 0px;">
+                <div class="col-md-2">
+                    <label asp-for="CorrectedBy" class="control-label"></label>
+                    <input asp-for="CorrectedBy" class="form-control" />
+                    <span asp-validation-for="CorrectedBy" class="text-danger"></span>
+                </div>
+                <div class="col-md-2">
+                    <label asp-for="DateCorrected" class="control-label"></label>
+                    <input asp-for="DateCorrected" class="form-control" />
+                    <span asp-validation-for="DateCorrected" class="text-danger"></span>
+                </div>
+                <div class="col-md-2">
+                    <label asp-for="InspectedBy" class="control-label"></label>
+                    <input asp-for="InspectedBy" class="form-control" />
+                    <span asp-validation-for="InspectedBy" class="text-danger"></span>
+                </div>
+                <div class="col-md-2">
+                    <label asp-for="DateInspected" class="control-label"></label>
+                    <input asp-for="DateInspected" class="form-control" />
+                    <span asp-validation-for="DateInspected" class="text-danger"></span>
+                </div>
+                <div class="col-md-2">
+                    <label asp-for="FiledBy" class="control-label"></label>
+                    <input asp-for="FiledBy" class="form-control" />
+                    <span asp-validation-for="FiledBy" class="text-danger"></span>
+                </div>
+                <div class="col-md-2">
+                    <label asp-for="DateFiled" class="control-label"></label>
+                    <input asp-for="DateFiled" class="form-control" />
+                    <span asp-validation-for="DateFiled" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-12" style="margin-top: 30px; padding-left: 15px;">
+                <input type="submit" value="Save" class="btn btn-default" /> |
+                <a asp-action="Index">Back to List</a>
+            </div>
+        </form>
+        <div class="col-md-12" style="margin-top: 20px; padding-left: 15px;">
+            @section Scripts {
+                @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+            }
+        </div>
+    </section>
+</div>
+

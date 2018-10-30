@@ -1,0 +1,108 @@
+﻿@model Discrepancy_Report_2.Models.RemovalInstallationForm
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Removal and Installation Form</h4>
+    <hr />
+
+    <div class="col-md-12">
+        <dl>
+            <dt style="overflow: visible;" class="col-md-2">@Html.DisplayNameFor(model => model.DiscrepancyReportC.ReportRecord):</dt>
+            <dd class="col-md-1" style="text-align:left;">@Html.DisplayFor(model => model.DiscrepancyReportC.ReportRecord)</dd>
+            <dt style="overflow: visible;" class="col-md-2">@Html.DisplayNameFor(model => model.DiscrepancyReportC.Aircraft.FaaNumber):</dt>
+            <dd class="col-md-1" style="text-wrap: none; text-align:left;">@Html.DisplayFor(model => model.DiscrepancyReportC.Aircraft.FaaNumber)</dd>
+            <dt style="overflow: visible;" class="col-md-2">@Html.DisplayNameFor(model => model.DiscrepancyReportC.Aircraft.AircraftModel.ModelType):</dt>
+            <dd class="col-md-1" style="text-wrap: none; text-align:left;">@Html.DisplayFor(model => model.DiscrepancyReportC.Aircraft.AircraftModel.ModelType)</dd>
+            <dt style="overflow: visible;" class="col-md-2">@Html.DisplayNameFor(model => model.EmployeeID):</dt>
+            <dd class="col-md-1" style="text-wrap: none; text-align:left;">@Html.DisplayFor(model => model.Employee.FullName)</dd>
+        </dl>
+    </div>
+
+    <div class="col-md-12" style="margin-top: 20px; border-bottom: 2px solid lightgrey; padding-left: 0px;"></div>
+
+    <div class="col-md-12" style="margin-top: 30px;">
+        <dl class="dl-horizontal">
+            <dt style="overflow: visible; text-align: right;">@Html.DisplayNameFor(model => model.RemovedPartNumber1)</dt>
+            <dd>@Html.DisplayFor(model => model.RemovedPartNumber1)</dd>
+            <dt style="overflow: visible; text-align: right;">@Html.DisplayNameFor(model => model.RemovedPartSerialNumber1)</dt>
+            <dd>@Html.DisplayFor(model => model.RemovedPartSerialNumber1)</dd>
+            <dt>@Html.DisplayNameFor(model => model.NomenclaturePart1)</dt>
+            <dd>@Html.DisplayFor(model => model.NomenclaturePart1)</dd>
+            <dd><br /></dd>
+
+            <dt>@Html.DisplayNameFor(model => model.RemovedPartNumber2)</dt>
+            <dd>@Html.DisplayFor(model => model.RemovedPartNumber2)</dd>
+            <dt>@Html.DisplayNameFor(model => model.RemovedPartSerialNumber2)</dt>
+            <dd>@Html.DisplayFor(model => model.RemovedPartSerialNumber2)</dd>
+            <dt>@Html.DisplayNameFor(model => model.NomenclaturePart2)</dt>
+            <dd>@Html.DisplayFor(model => model.NomenclaturePart2)</dd>
+            <dd><br /></dd>
+
+            <dt>@Html.DisplayNameFor(model => model.RemovedPartNumber3)</dt>
+            <dd>@Html.DisplayFor(model => model.RemovedPartNumber3)</dd>
+            <dt>@Html.DisplayNameFor(model => model.RemovedPartSerialNumber3)</dt>
+            <dd>@Html.DisplayFor(model => model.RemovedPartSerialNumber3)</dd>
+            <dt>@Html.DisplayNameFor(model => model.NomenclaturePart3)</dt>
+            <dd>@Html.DisplayFor(model => model.NomenclaturePart3)</dd>
+            <dd><br /></dd>
+
+            <dt>@Html.DisplayNameFor(model => model.RemovedPartNumber4)</dt>
+            <dd>@Html.DisplayFor(model => model.RemovedPartNumber4)</dd>
+            <dt>@Html.DisplayNameFor(model => model.RemovedPartSerialNumber4)</dt>
+            <dd>@Html.DisplayFor(model => model.RemovedPartSerialNumber4)</dd>
+            <dt>@Html.DisplayNameFor(model => model.NomenclaturePart4)</dt>
+            <dd>@Html.DisplayFor(model => model.NomenclaturePart4)</dd>
+            <dd><br /></dd>
+
+            <dt>@Html.DisplayNameFor(model => model.InstalledPartNumber1)</dt>
+            <dd>@Html.DisplayFor(model => model.InstalledPartNumber1)</dd>
+            <dt>@Html.DisplayNameFor(model => model.InstalledPartSerialNumber1)</dt>
+            <dd>@Html.DisplayFor(model => model.InstalledPartSerialNumber1)</dd>
+            <dd><br /></dd>
+
+            <dt>@Html.DisplayNameFor(model => model.InstalledPartNumber2)</dt>
+            <dd>@Html.DisplayFor(model => model.InstalledPartNumber2)</dd>
+            <dt>@Html.DisplayNameFor(model => model.InstalledPartSerialNumber2)</dt>
+            <dd>@Html.DisplayFor(model => model.InstalledPartSerialNumber2)</dd>
+            <dd><br /></dd>
+
+            <dt>@Html.DisplayNameFor(model => model.InstalledPartNumber3)</dt>
+            <dd>@Html.DisplayFor(model => model.InstalledPartNumber3)</dd>
+            <dt>@Html.DisplayNameFor(model => model.InstalledPartSerialNumber3)</dt>
+            <dd>@Html.DisplayFor(model => model.InstalledPartSerialNumber3)</dd>
+            <dd><br /></dd>
+
+            <dt>@Html.DisplayNameFor(model => model.InstalledPartNumber4)</dt>
+            <dd>@Html.DisplayFor(model => model.InstalledPartNumber4)</dd>
+            <dt>@Html.DisplayNameFor(model => model.InstalledPartSerialNumber4)</dt>
+            <dd>@Html.DisplayFor(model => model.InstalledPartSerialNumber4)</dd>
+            <dd><br /></dd>
+
+            <dt>@Html.DisplayNameFor(model => model.CorrectedBy)</dt>
+            <dd>@Html.DisplayFor(model => model.CorrectedBy)</dd>
+            <dt>@Html.DisplayNameFor(model => model.DateCorrected)</dt>
+            <dd>@Html.DisplayFor(model => model.DateCorrected)</dd>
+            <dd><br /></dd>
+
+            <dt>@Html.DisplayNameFor(model => model.InspectedBy)</dt>
+            <dd>@Html.DisplayFor(model => model.InspectedBy)</dd>
+            <dt>@Html.DisplayNameFor(model => model.DateInspected)</dt>
+            <dd>@Html.DisplayFor(model => model.DateInspected)</dd>
+            <dd><br /></dd>
+            
+            <dt>@Html.DisplayNameFor(model => model.FiledBy)</dt>
+            <dd>@Html.DisplayFor(model => model.FiledBy)</dd>
+            <dt>@Html.DisplayNameFor(model => model.DateFiled)</dt>
+            <dd>@Html.DisplayFor(model => model.DateFiled)</dd>
+        </dl>
+    </div>
+</div>
+<div class="col-md-12" style="margin-bottom: 20px;">
+    <a asp-action="Edit" asp-route-id="@Model.ID" class="btn btn-default">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

@@ -280,6 +280,46 @@ namespace Discrepancy_Report_2.Data
                 context.DiscrepancyReportCs.Add(dr);
             }
             context.SaveChanges();
+
+            // seeding the removal installation form data
+            var forms = new RemovalInstallationForm[]
+            {
+                new RemovalInstallationForm{DiscrepancyReportCID=1, DateFormCreated=DateTime.Parse("2018-12-01"), EmployeeID=1, RemovedPartNumber1="PN1234", RemovedPartSerialNumber1="SN1234", NomenclaturePart1="Nom1",
+                                            RemovedPartNumber2="PN1235", RemovedPartSerialNumber2="SN1235", NomenclaturePart2="Nom2", RemovedPartNumber3=null, RemovedPartSerialNumber3=null, NomenclaturePart3=null,
+                                            RemovedPartNumber4=null, RemovedPartSerialNumber4=null, NomenclaturePart4=null, InstalledPartNumber1="PN0987", InstalledPartSerialNumber1="SN0987",
+                                            InstalledPartNumber2="SN0986", InstalledPartSerialNumber2="SN0986", InstalledPartNumber3=null, InstalledPartSerialNumber3=null,
+                                            InstalledPartNumber4=null, InstalledPartSerialNumber4=null, CorrectedBy="Bob Haskins", DateCorrected=DateTime.Parse("2018-12-01"), InspectedBy=null, DateInspected=null,
+                                            FiledBy=null, DateFiled=null},
+                new RemovalInstallationForm{DiscrepancyReportCID=2, DateFormCreated=DateTime.Parse("2018-12-03"), EmployeeID=3, RemovedPartNumber1="PN1123", RemovedPartSerialNumber1="SN1123", NomenclaturePart1="Nom1",
+                                            RemovedPartNumber2="PN1135", RemovedPartSerialNumber2="SN1135", NomenclaturePart2="Nom2", RemovedPartNumber3="PN1126", RemovedPartSerialNumber3="SN1126", NomenclaturePart3="Nom3",
+                                            RemovedPartNumber4=null, RemovedPartSerialNumber4=null, NomenclaturePart4=null, InstalledPartNumber1="PN1987", InstalledPartSerialNumber1="SN1987",
+                                            InstalledPartNumber2=null, InstalledPartSerialNumber2=null, InstalledPartNumber3=null, InstalledPartSerialNumber3=null,
+                                            InstalledPartNumber4=null, InstalledPartSerialNumber4=null, CorrectedBy="Tom Law", DateCorrected=DateTime.Parse("2018-12-03"), InspectedBy="Claire Little", DateInspected=DateTime.Parse("2018-12-03"),
+                                            FiledBy=null, DateFiled=null},
+                new RemovalInstallationForm{DiscrepancyReportCID=3, DateFormCreated=DateTime.Parse("2018-12-05"), EmployeeID=1, RemovedPartNumber1="PN1114", RemovedPartSerialNumber1="SN1114", NomenclaturePart1="Nom1",
+                                            RemovedPartNumber2="PN1115", RemovedPartSerialNumber2="SN1115", NomenclaturePart2="Nom2", RemovedPartNumber3=null, RemovedPartSerialNumber3=null, NomenclaturePart3=null,
+                                            RemovedPartNumber4=null, RemovedPartSerialNumber4=null, NomenclaturePart4=null, InstalledPartNumber1="PN0987", InstalledPartSerialNumber1="SN0987",
+                                            InstalledPartNumber2="SN2986", InstalledPartSerialNumber2="SN2986", InstalledPartNumber3="PN2987", InstalledPartSerialNumber3="SN2987",
+                                            InstalledPartNumber4="PN2988", InstalledPartSerialNumber4="SN2988", CorrectedBy="Bob Haskins", DateCorrected=DateTime.Parse("2018-12-05"), InspectedBy="Claire Little", DateInspected=DateTime.Parse("2018-12-05"),
+                                            FiledBy="Sarah Homes", DateFiled=DateTime.Parse("2018-12-05")},
+                new RemovalInstallationForm{DiscrepancyReportCID=4, DateFormCreated=DateTime.Parse("2018-12-08"), EmployeeID=3, RemovedPartNumber1="PN1111", RemovedPartSerialNumber1="SN1111", NomenclaturePart1="Nom1",
+                                            RemovedPartNumber2="PN1112", RemovedPartSerialNumber2="SN1112", NomenclaturePart2="Nom2", RemovedPartNumber3=null, RemovedPartSerialNumber3=null, NomenclaturePart3=null,
+                                            RemovedPartNumber4=null, RemovedPartSerialNumber4=null, NomenclaturePart4=null, InstalledPartNumber1="PN0984", InstalledPartSerialNumber1="SN0984",
+                                            InstalledPartNumber2="SN0983", InstalledPartSerialNumber2="SN0983", InstalledPartNumber3=null, InstalledPartSerialNumber3=null,
+                                            InstalledPartNumber4=null, InstalledPartSerialNumber4=null, CorrectedBy="Tom Law", DateCorrected=DateTime.Parse("2018-12-08"), InspectedBy=null, DateInspected=null,
+                                            FiledBy=null, DateFiled=null},
+                new RemovalInstallationForm{DiscrepancyReportCID=1, DateFormCreated=DateTime.Parse("2018-12-09"), EmployeeID=1, RemovedPartNumber1="PN1234", RemovedPartSerialNumber1="SN1234", NomenclaturePart1="Nom1",
+                                            RemovedPartNumber2="PN1222", RemovedPartSerialNumber2="SN1222", NomenclaturePart2="Nom2", RemovedPartNumber3=null, RemovedPartSerialNumber3=null, NomenclaturePart3=null,
+                                            RemovedPartNumber4=null, RemovedPartSerialNumber4=null, NomenclaturePart4=null, InstalledPartNumber1="PN0087", InstalledPartSerialNumber1="SN0087",
+                                            InstalledPartNumber2="SN0086", InstalledPartSerialNumber2="SN0086", InstalledPartNumber3=null, InstalledPartSerialNumber3=null,
+                                            InstalledPartNumber4=null, InstalledPartSerialNumber4=null, CorrectedBy="Bob Haskins", DateCorrected=DateTime.Parse("2018-12-09"), InspectedBy=null, DateInspected=null,
+                                            FiledBy=null, DateFiled=null}
+            };
+            foreach(RemovalInstallationForm rif in forms)
+            {
+                context.RemovalInstallationForms.Add(rif);
+            }
+            context.SaveChanges();
         }
     }
 }

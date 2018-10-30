@@ -51,7 +51,24 @@
                             <li><a class="dropdown-item" href="#">Manage Aircraft Assignments</a></li>
                         </ul>
                     </li>
-                    <li><a asp-area="" asp-controller="DiscrepancyReportCs" asp-action="Index">Manage Reports</a></li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle"
+                           data-toggle="dropdown"
+                           href="#"
+                           role="button"
+                           aria-haspopup="true"
+                           aria-expanded="false">
+                            Discrepancy HQ
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" asp-controller="DiscrepancyReportCs" asp-action="Index">Manage Discrepancy Reports</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a asp-area="" asp-controller="RemovalInstallationForms" asp-action="Index" class="dropdown-item">Manage Part Removal and Installation</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a asp-area="" asp-controller="OrderForms" asp-action="Index" class="dropdown-item">Manage Part Orders</a></li>
+                        </ul>
+                    </li>
                     <li style="color:grey;">
                         <a>
                             <span class="glyphicon glyphicon-list-alt"
