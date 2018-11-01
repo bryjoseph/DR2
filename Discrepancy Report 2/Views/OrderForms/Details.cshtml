@@ -1,0 +1,90 @@
+﻿@model Discrepancy_Report_2.Models.OrderForm
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>OrderForm</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.OrderNumber)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.OrderNumber)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DateOrderCreated)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DateOrderCreated)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Ui)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Ui)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.PartQuantity)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PartQuantity)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.PartDocumentNumber)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PartDocumentNumber)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TrackingNumber)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TrackingNumber)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Edd)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Edd)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Employee)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Employee.ID)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.OrderStatus)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.OrderStatus.ID)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Part)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Part.PartName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.PartCategory)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PartCategory.ID)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.PartSubCategory)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PartSubCategory.ID)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.ID">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

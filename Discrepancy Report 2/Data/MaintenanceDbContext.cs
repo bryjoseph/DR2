@@ -26,6 +26,12 @@ namespace Discrepancy_Report_2.Data
         public DbSet<SignificantEvent> SignificantEvents { get; set; }
         public DbSet<MaintenanceType>MaintenanceTypes { get; set; }
         public DbSet<RemovalInstallationForm> RemovalInstallationForms { get; set; }
+        public DbSet<OrderStatus> OrderStatuses { get; set; }
+        public DbSet<TagColor> TagColors { get; set; }
+        public DbSet<Part> Parts { get; set; }
+        public DbSet<PartSubCategory> PartSubCategories { get; set; }
+        public DbSet<PartCategory> PartCategories { get; set; }
+        public DbSet<OrderForm> OrderForms { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -44,8 +50,12 @@ namespace Discrepancy_Report_2.Data
             modelBuilder.Entity<SignificantEvent>().ToTable("Significant_Event");
             modelBuilder.Entity<MaintenanceType>().ToTable("Maintenance_Type");
             modelBuilder.Entity<RemovalInstallationForm>().ToTable("Removal_Installation_Form");
-            // modelBuilder.Entity<CorrectiveAction>().ToTable("Corrective_Action");
-            // modelBuilder.Entity<ReferenceGroup>().ToTable("Reference_Group");
+            modelBuilder.Entity<OrderStatus>().ToTable("Order_Status");
+            modelBuilder.Entity<TagColor>().ToTable("Tag_Color");
+            modelBuilder.Entity<Part>().ToTable("Part");
+            modelBuilder.Entity<PartSubCategory>().ToTable("Part_Subcategory");
+            modelBuilder.Entity<PartCategory>().ToTable("Part_Category");
+            modelBuilder.Entity<OrderForm>().ToTable("Order_Form");
         }
     }
 }

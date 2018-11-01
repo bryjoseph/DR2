@@ -1,0 +1,101 @@
+﻿@model IEnumerable<Discrepancy_Report_2.Models.OrderForm>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.OrderNumber)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DateOrderCreated)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Ui)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PartQuantity)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PartDocumentNumber)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TrackingNumber)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Edd)
+                </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Employee)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OrderStatus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Part)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PartCategory)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PartSubCategory)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateOrderCreated)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ui)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PartQuantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PartDocumentNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TrackingNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Edd)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Employee.ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderStatus.ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Part.PartName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PartCategory.ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PartSubCategory.ID)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

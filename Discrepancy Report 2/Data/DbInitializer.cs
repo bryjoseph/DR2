@@ -182,36 +182,6 @@ namespace Discrepancy_Report_2.Data
             //}
             //context.SaveChanges();
 
-            // adding Corrective Actions
-            //var actions = new CorrectiveAction[]
-            //{
-            //    new CorrectiveAction{CorrectiveActionDescription="Weapon mount inspected and deemed operable",
-            //                        OpsCheckRequired=false, LeakCheck=false, EmployeeID=1, MechanicDateSigned=DateTime.Parse("2018-07-20"),
-            //                        EmployeeID1=2, QaDateSigned=DateTime.Parse("2018-07-20"), GovernmentOfficial="Tim Gates",
-            //                        GovOfficialDateSigned=DateTime.Parse("2018-07-21"), ReferenceGroupID=1},
-            //    new CorrectiveAction{CorrectiveActionDescription="The gear was deemed operable and cleared for flight",
-            //                        OpsCheckRequired=true, LeakCheck=false, EmployeeID=3, MechanicDateSigned=DateTime.Parse("2018-08-15"),
-            //                        EmployeeID1=2, QaDateSigned=DateTime.Parse("2018-08-15"), GovernmentOfficial="Tim Gates",
-            //                        GovOfficialDateSigned=DateTime.Parse("2018-08-16"), ReferenceGroupID=2},
-            //    new CorrectiveAction{CorrectiveActionDescription="Airframe was inspected and cleared because no damage was present",
-            //                        OpsCheckRequired=false, LeakCheck=true, EmployeeID=1, MechanicDateSigned=DateTime.Parse("2018-03-11"),
-            //                        EmployeeID1=2, QaDateSigned=DateTime.Parse("2018-03-11"), GovernmentOfficial="Sarah Bates",
-            //                        GovOfficialDateSigned=DateTime.Parse("2018-03-12"), ReferenceGroupID=3},
-            //    new CorrectiveAction{CorrectiveActionDescription="Oil changed and engine checked to see if operable",
-            //                        OpsCheckRequired=true, LeakCheck=true, EmployeeID=3, MechanicDateSigned=DateTime.Parse("2018-07-21"),
-            //                        EmployeeID1=2, QaDateSigned=DateTime.Parse("2018-07-21"), GovernmentOfficial="Lindsey Southgate",
-            //                        GovOfficialDateSigned=DateTime.Parse("2018-07-22"), ReferenceGroupID=4},
-            //    new CorrectiveAction{CorrectiveActionDescription="Placards fixed and secured for safety",
-            //                        OpsCheckRequired=false, LeakCheck=false, EmployeeID=1, MechanicDateSigned=DateTime.Parse("2018-12-15"),
-            //                        EmployeeID1=2, QaDateSigned=DateTime.Parse("2018-12-15"), GovernmentOfficial=null,
-            //                        ReferenceGroupID=5},
-            //};
-            //foreach (CorrectiveAction ca in actions)
-            //{
-            //    context.CorrectiveActions.Add(ca);
-            //}
-            //context.SaveChanges();
-
             var reports = new DiscrepancyReportC[]
             {
                 new DiscrepancyReportC{ReportRecord="ABVD-0000001", AircraftID=1, EmployeeID=1, DateDiscovered=DateTime.Parse("2018-12-01"),
@@ -320,6 +290,117 @@ namespace Discrepancy_Report_2.Data
                 context.RemovalInstallationForms.Add(rif);
             }
             context.SaveChanges();
+
+            // seeding the order status data
+            var statuses = new OrderStatus[]
+            {
+                new OrderStatus{StatusDescription="New"},
+                new OrderStatus{StatusDescription="Processing"},
+                new OrderStatus{StatusDescription="Closed/Shipped"},
+                new OrderStatus{StatusDescription="Dead"},
+                new OrderStatus{StatusDescription="Drop Shipped"}
+            };
+            foreach (OrderStatus os in statuses)
+            {
+                context.OrderStatuses.Add(os);
+            }
+            context.SaveChangesAsync();
+
+            // seeding tag color data
+            var colors = new TagColor[]
+            {
+                new TagColor{ColorDescription="Green"},
+                new TagColor{ColorDescription="Red"},
+                new TagColor{ColorDescription="Yellow"},
+                new TagColor{ColorDescription="Blue"},
+                new TagColor{ColorDescription="Orange"}
+            };
+            foreach(TagColor tg in colors)
+            {
+                context.TagColors.Add(tg);
+            }
+            context.SaveChangesAsync();
+
+            // seeding Category data
+            var categories = new PartCategory[]
+            {
+                new PartCategory{CategoryName="Wings"},
+                new PartCategory{CategoryName="Engines"},
+                new PartCategory{CategoryName="Landing Gear"},
+                new PartCategory{CategoryName="Fuselage"},
+                new PartCategory{CategoryName="Cargo Bay"}
+            };
+            foreach(PartCategory pc in categories)
+            {
+                context.PartCategories.Add(pc);
+            }
+            context.SaveChangesAsync();
+
+            // seeding Subcategory data
+            var subcategories = new PartSubCategory[]
+            {
+                new PartSubCategory{SubCategoryName="Boeing", CategoryID=1},
+                new PartSubCategory{SubCategoryName="GE", CategoryID=2},
+                new PartSubCategory{SubCategoryName="AeroShell", CategoryID=4},
+                new PartSubCategory{SubCategoryName="Dunlop Aviation", CategoryID=1},
+                new PartSubCategory{SubCategoryName="HB Fuller", CategoryID=5},
+                new PartSubCategory{SubCategoryName="L3", CategoryID=4},
+                new PartSubCategory{SubCategoryName="Rieker Instruments", CategoryID=3},
+                new PartSubCategory{SubCategoryName="UTC Aerospace Systems", CategoryID=1}
+            };
+            foreach(PartSubCategory psc in subcategories)
+            {
+                context.PartSubCategories.Add(psc);
+            }
+            context.SaveChangesAsync();
+
+            // seeding Part data
+            var parts = new Part[]
+            {
+                new Part{PartName="Winglet", PartNumber=12345, PartSerialNumber=09876, TagColorID=1, SubCategoryID=1},
+                new Part{PartName="Roll Altitude", PartNumber=12332, PartSerialNumber=09879, TagColorID=1, SubCategoryID=1},
+                new Part{PartName="Radome Boots", PartNumber=11234, PartSerialNumber=09877, TagColorID=1, SubCategoryID=2},
+                new Part{PartName="Oil Filter", PartNumber=22222, PartSerialNumber=000003, TagColorID=3, SubCategoryID=2},
+                new Part{PartName="ORing", PartNumber=12344, PartSerialNumber=09875, TagColorID=2, SubCategoryID=3},
+                new Part{PartName="Roll Altitude", PartNumber=12332, PartSerialNumber=09879, TagColorID=1, SubCategoryID=3},
+                new Part{PartName="Pneumatic Filter", PartNumber=11110, PartSerialNumber=000001, TagColorID=1, SubCategoryID=4},
+                new Part{PartName="Bushing", PartNumber=33333, PartSerialNumber=000003, TagColorID=1, SubCategoryID=4},
+                new Part{PartName="Piston Rod", PartNumber=44444, PartSerialNumber=000004, TagColorID=4, SubCategoryID=5},
+                new Part{PartName="Cargo Container", PartNumber=66666, PartSerialNumber=00005, TagColorID=1, SubCategoryID=5},
+                new Part{PartName="Baffle", PartNumber=55555, PartSerialNumber=000006, TagColorID=1, SubCategoryID=6},
+                new Part{PartName="Lens Replacement", PartNumber=77777, PartSerialNumber=000007, TagColorID=1, SubCategoryID=6},
+                new Part{PartName="Brake Pads", PartNumber=88888, PartSerialNumber=000007, TagColorID=1, SubCategoryID=7},
+                new Part{PartName="Tires", PartNumber=99999, PartSerialNumber=000008, TagColorID=2, SubCategoryID=7},
+                new Part{PartName=" Wing Stiffner", PartNumber=00011, PartSerialNumber=00009, TagColorID=1, SubCategoryID=8},
+                new Part{PartName="Wing Straps", PartNumber=00022, PartSerialNumber=000011, TagColorID=1, SubCategoryID=8}
+            };
+            foreach(Part p in parts)
+            {
+                context.Parts.Add(p);
+            }
+            context.SaveChangesAsync();
+
+            // seeding the Order Form Data
+            var oForms = new OrderForm[]
+            {
+                new OrderForm{OrderNumber="XVY-1234", EmployeeID=1, DateOrderCreated=DateTime.Parse("2018-12-01"),
+                                PartCategoryID=1, PartSubCategoryID=1, PartID=1, Ui="Nom", PartQuantity=1,
+                                PartDocumentNumber ="AV-0101", TrackingNumber="AB1452-HJB0098", Edd=DateTime.Parse("2018-12-15"),
+                                OrderStatusID=1},
+                new OrderForm{OrderNumber="HFJ-6574", EmployeeID=3, DateOrderCreated=DateTime.Parse("2018-12-03"),
+                                PartCategoryID=2, PartSubCategoryID=2, PartID=4, Ui="Oil", PartQuantity=10,
+                                PartDocumentNumber ="OL-0022", TrackingNumber="TS3245-KJGL9967", Edd=DateTime.Parse("2018-12-21"),
+                                OrderStatusID=2},
+                new OrderForm{OrderNumber="TTQ-9976", EmployeeID=1, DateOrderCreated=DateTime.Parse("2018-12-05"),
+                                PartCategoryID=3, PartSubCategoryID=7, PartID=13, Ui="BRK", PartQuantity=6,
+                                PartDocumentNumber ="BK-0113", TrackingNumber="BK2234-PIL1155", Edd=DateTime.Parse("2018-12-19"),
+                                OrderStatusID=3}
+            };
+            foreach(OrderForm of in oForms)
+            {
+                context.OrderForms.Add(of);
+            }
+            context.SaveChangesAsync();
         }
     }
 }
