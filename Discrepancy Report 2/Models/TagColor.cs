@@ -11,8 +11,8 @@ namespace Discrepancy_Report_2.Models
     {
         public int ID { get; set; }
 
-        [Display(Name = "Color Description")]
-        public string ColorDescription { get; set; }
+        [Display(Name = "Tag Color")]
+        public string ColorOfTag { get; set; }
 
         // navigation properties
         public ICollection<Part> Parts { get; set; }

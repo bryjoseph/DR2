@@ -15,13 +15,19 @@ namespace Discrepancy_Report_2.Models
         [Display(Name = "System Category")]
         public string CategoryName { get; set; }
 
-        [NotMapped]
-        public int PartID { get; set; }
+        // public int OrderFormID { get; set; }
 
-        [NotMapped]
-        public int PartSubCategoryID { get; set; }
+        //[NotMapped]
+        //public int PartID { get; set; }
+
+        //[NotMapped]
+        // public int PartSubCategoryID { get; set; }
 
         // navigation properties
-        public ICollection<OrderForm> OrderForms { get; set; }
+        // public ICollection<OrderForm> OrderForms { get; set; } old
+        // public ICollection<PartSubCategory> PartSubCategories { get; set; }
+
+        // new Order Form connection
+        public ICollection<NewOrderForm> NewOrderForms { get; set; }
     }
 }

@@ -28,5 +28,9 @@ namespace Discrepancy_Report_2.Models
         public ICollection<DiscrepancyReportC> DiscrepancyReports { get; set; }
         // public ICollection<DiscrepancyAssignment> DiscrepancyAssignments { get; set; }
         public ICollection<RemovalInstallationForm> RemovalInstallationForms { get; set; }
+        // public ICollection<OrderForm> OrderForms { get; set; } old connection 
+        
+        // new OrderForm connection
+        public ICollection<NewOrderForm> NewOrderForms { get; set; }
     }
 }

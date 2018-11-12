@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Discrepancy_Report_2.Models.OrderForm>
+﻿@*@model IEnumerable<Discrepancy_Report_2.Models.OrderForm>
 
 @{
     ViewData["Title"] = "Index";
@@ -40,7 +40,7 @@
                 @Html.DisplayNameFor(model => model.OrderStatus)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Part)
+                @Html.DisplayNameFor(model => model.PartName)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.PartCategory)
@@ -82,7 +82,7 @@
                 @Html.DisplayFor(modelItem => item.OrderStatus.ID)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Part.PartName)
+                @Html.DisplayFor(modelItem => item.PartName)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.PartCategory.ID)
@@ -98,4 +98,4 @@
         </tr>
 }
     </tbody>
-</table>
+</table>*@

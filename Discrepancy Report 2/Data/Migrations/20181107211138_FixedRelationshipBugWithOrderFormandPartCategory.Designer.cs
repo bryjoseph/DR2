@@ -11,9 +11,10 @@ using System;
 namespace Discrepancy_Report_2.Data.Migrations
 {
     [DbContext(typeof(MaintenanceDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20181107211138_FixedRelationshipBugWithOrderFormandPartCategory")]
+    partial class FixedRelationshipBugWithOrderFormandPartCategory
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -298,49 +299,6 @@ namespace Discrepancy_Report_2.Data.Migrations
                     b.ToTable("Maintenance_Type");
                 });
 
-            modelBuilder.Entity("Discrepancy_Report_2.Models.NewOrderForm", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<DateTime>("DateOrderCreated");
-
-                    b.Property<DateTime?>("Edd");
-
-                    b.Property<int>("EmployeeID");
-
-                    b.Property<string>("OrderNumber")
-                        .IsRequired();
-
-                    b.Property<int>("OrderStatusID");
-
-                    b.Property<int>("PartCategoryID");
-
-                    b.Property<string>("PartDocumentNumber");
-
-                    b.Property<string>("PartName");
-
-                    b.Property<int?>("PartQuantity");
-
-                    b.Property<int>("PartSubCategoryID");
-
-                    b.Property<string>("TrackingNumber");
-
-                    b.Property<string>("Ui");
-
-                    b.HasKey("ID");
-
-                    b.HasIndex("EmployeeID");
-
-                    b.HasIndex("OrderStatusID");
-
-                    b.HasIndex("PartCategoryID");
-
-                    b.HasIndex("PartSubCategoryID");
-
-                    b.ToTable("OrderForm");
-                });
-
             modelBuilder.Entity("Discrepancy_Report_2.Models.OrderForm", b =>
                 {
                     b.Property<int>("ID")
@@ -361,7 +319,7 @@ namespace Discrepancy_Report_2.Data.Migrations
 
                     b.Property<string>("PartDocumentNumber");
 
-                    b.Property<string>("PartName");
+                    b.Property<int?>("PartID");
 
                     b.Property<int?>("PartQuantity");
 
@@ -372,6 +330,16 @@ namespace Discrepancy_Report_2.Data.Migrations
                     b.Property<string>("Ui");
 
                     b.HasKey("ID");
+
+                    b.HasIndex("EmployeeID");
+
+                    b.HasIndex("OrderStatusID");
+
+                    b.HasIndex("PartCategoryID");
+
+                    b.HasIndex("PartID");
+
+                    b.HasIndex("PartSubCategoryID");
 
                     b.ToTable("Order_Form");
                 });
@@ -400,9 +368,13 @@ namespace Discrepancy_Report_2.Data.Migrations
 
                     b.Property<int>("PartSerialNumber");
 
+                    b.Property<int>("PartSubCategoryID");
+
                     b.Property<int>("TagColorID");
 
                     b.HasKey("ID");
+
+                    b.HasIndex("PartSubCategoryID");
 
                     b.HasIndex("TagColorID");
 
@@ -416,6 +388,8 @@ namespace Discrepancy_Report_2.Data.Migrations
 
                     b.Property<string>("CategoryName");
 
+                    b.Property<int>("OrderFormID");
+
                     b.HasKey("ID");
 
                     b.ToTable("Part_Category");
@@ -426,9 +400,13 @@ namespace Discrepancy_Report_2.Data.Migrations
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<int>("PartCategoryID");
+
                     b.Property<string>("SubCategoryName");
 
                     b.HasKey("ID");
+
+                    b.HasIndex("PartCategoryID");
 
                     b.ToTable("Part_Subcategory");
                 });
@@ -524,7 +502,7 @@ namespace Discrepancy_Report_2.Data.Migrations
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("ColorOfTag");
+                    b.Property<string>("ColorDescription");
 
                     b.HasKey("ID");
 
@@ -713,34 +691,49 @@ namespace Discrepancy_Report_2.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("Discrepancy_Report_2.Models.NewOrderForm", b =>
+            modelBuilder.Entity("Discrepancy_Report_2.Models.OrderForm", b =>
                 {
                     b.HasOne("Discrepancy_Report_2.Models.Employee", "Employee")
-                        .WithMany("NewOrderForms")
+                        .WithMany("OrderForms")
                         .HasForeignKey("EmployeeID")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("Discrepancy_Report_2.Models.OrderStatus", "OrderStatus")
-                        .WithMany("NewOrderForms")
+                        .WithMany("OrderForms")
                         .HasForeignKey("OrderStatusID")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("Discrepancy_Report_2.Models.PartCategory", "PartCategory")
-                        .WithMany("NewOrderForms")
-                        .HasForeignKey("PartCategoryID")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .WithMany("OrderForms")
+                        .HasForeignKey("PartCategoryID");
+
+                    b.HasOne("Discrepancy_Report_2.Models.Part", "Part")
+                        .WithMany("OrderForms")
+                        .HasForeignKey("PartID");
 
                     b.HasOne("Discrepancy_Report_2.Models.PartSubCategory", "PartSubCategory")
-                        .WithMany("NewOrderForms")
-                        .HasForeignKey("PartSubCategoryID")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .WithMany("OrderForms")
+                        .HasForeignKey("PartSubCategoryID");
                 });
 
             modelBuilder.Entity("Discrepancy_Report_2.Models.Part", b =>
                 {
+                    b.HasOne("Discrepancy_Report_2.Models.PartSubCategory", "PartSubCategory")
+                        .WithMany("Parts")
+                        .HasForeignKey("PartSubCategoryID")
+                        .OnDelete(DeleteBehavior.Cascade);
+
                     b.HasOne("Discrepancy_Report_2.Models.TagColor", "TagColor")
                         .WithMany("Parts")
                         .HasForeignKey("TagColorID")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("Discrepancy_Report_2.Models.PartSubCategory", b =>
+                {
+                    b.HasOne("Discrepancy_Report_2.Models.PartCategory", "PartCategory")
+                        .WithMany("PartSubCategories")
+                        .HasForeignKey("PartCategoryID")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

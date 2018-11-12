@@ -6,6 +6,13 @@
     <DockerTargetOS>Windows</DockerTargetOS>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="Data\Migrations\20181102192852_FixedRelationshipsBetweenPartsCategoriesandSubCats.cs" />
+    <Compile Remove="Data\Migrations\20181102192852_FixedRelationshipsBetweenPartsCategoriesandSubCats.Designer.cs" />
+    <Compile Remove="Data\Migrations\20181102203526_ChangedFKColumnNamesForPartClasses.cs" />
+    <Compile Remove="Data\Migrations\20181102203526_ChangedFKColumnNamesForPartClasses.Designer.cs" />
+  </ItemGroup>
+
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.9" />

@@ -41,6 +41,10 @@ namespace Discrepancy_Report_2
 
         public static IWebHost BuildWebHost(string[] args) => WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>()
+            /* Two lines added based on several suggestions*/
+                .UseIISIntegration()
+                .UseKestrel()
+            /* End of suggestion */
                 .Build();
     }
 }

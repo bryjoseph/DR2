@@ -31,7 +31,9 @@ namespace Discrepancy_Report_2.Data
         public DbSet<Part> Parts { get; set; }
         public DbSet<PartSubCategory> PartSubCategories { get; set; }
         public DbSet<PartCategory> PartCategories { get; set; }
+        public DbSet<NewOrderForm> NewOrderForms { get; set; }
         public DbSet<OrderForm> OrderForms { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -55,6 +57,7 @@ namespace Discrepancy_Report_2.Data
             modelBuilder.Entity<Part>().ToTable("Part");
             modelBuilder.Entity<PartSubCategory>().ToTable("Part_Subcategory");
             modelBuilder.Entity<PartCategory>().ToTable("Part_Category");
+            modelBuilder.Entity<NewOrderForm>().ToTable("OrderForm");
             modelBuilder.Entity<OrderForm>().ToTable("Order_Form");
         }
     }

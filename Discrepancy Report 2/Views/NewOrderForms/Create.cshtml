@@ -1,0 +1,100 @@
+﻿@model Discrepancy_Report_2.Models.NewOrderForm
+
+@{
+    ViewData["Title"] = "Create OF";
+}
+
+<h2>Create</h2>
+
+<h4>Order Form</h4>
+<hr />
+
+<div class="col-md-12">
+    <section>
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="col-md-3">
+                <label asp-for="OrderNumber" class="control-label"></label>
+                <input asp-for="OrderNumber" class="form-control" />
+                <span asp-validation-for="OrderNumber" class="text-danger"></span>
+            </div>
+            <div class="col-md-3">
+                <label asp-for="EmployeeID" class="control-label"></label>
+                <select asp-for="EmployeeID" class="form-control" asp-items="ViewBag.Employees">
+                    <option value="">--Select Employee--</option>
+                </select>
+                <span asp-validation-for="EmployeeID" class="text-danger"></span>
+            </div>
+            <div class="col-md-3">
+                <label asp-for="DateOrderCreated" class="control-label"></label>
+                <input asp-for="DateOrderCreated" class="form-control" />
+                <span asp-validation-for="DateOrderCreated" class="text-danger"></span>
+            </div>
+            <div class="col-md-3">
+                <label asp-for="TrackingNumber" class="control-label"></label>
+                <input asp-for="TrackingNumber" class="form-control" />
+                <span asp-validation-for="TrackingNumber" class="text-danger"></span>
+            </div>
+            <div class="col-md-12" style="padding-left: 0px; padding-right: 0px; margin-top: 20px;">
+                <div class="col-md-3">
+                    <label asp-for="PartCategoryID" class="control-label"></label>
+                    <select asp-for="PartCategoryID" class="form-control" asp-items="ViewBag.Categories">
+                        <option value="">--Select Part Category--</option>
+                    </select>
+                    <span asp-validation-for="PartCategoryID" class="text-danger"></span>
+                </div>
+                <div class="col-md-3">
+                    <label asp-for="PartSubCategoryID" class="control-label"></label>
+                    <select asp-for="PartSubCategoryID" class="form-control" asp-items="ViewBag.Subcategories">
+                        <option value="">--Select Part Subcategory--</option>
+                    </select>
+                    <span asp-validation-for="PartSubCategoryID" class="text-danger"></span>
+                </div>
+                <div class="col-md-3">
+                    <label asp-for="PartName" class="control-label"></label>
+                    <input asp-for="PartName" class="form-control" />
+                    <span asp-validation-for="PartName" class="text-danger"></span>
+                </div>
+                <div class="col-md-2">
+                    <label asp-for="PartQuantity" class="control-label"></label>
+                    <input asp-for="PartQuantity" class="form-control" />
+                    <span asp-validation-for="PartQuantity" class="text-danger"></span>
+                </div>
+                <div class="col-md-1">
+                    <label asp-for="Ui" class="control-label"></label>
+                    <input asp-for="Ui" class="form-control" />
+                    <span asp-validation-for="Ui" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-12" style="padding-left:0px; padding-right:0px; margin-top:20px;">
+                <div class="col-md-4">
+                    <label asp-for="PartDocumentNumber" class="control-label"></label>
+                    <input asp-for="PartDocumentNumber" class="form-control" />
+                    <span asp-validation-for="PartDocumentNumber" class="text-danger"></span>
+                </div>
+                <div class="col-md-4">
+                    <label asp-for="Edd" class="control-label"></label>
+                    <input asp-for="Edd" class="form-control" />
+                    <span asp-validation-for="Edd" class="text-danger"></span>
+                </div>
+                <div class="col-md-4">
+                    <label asp-for="OrderStatusID" class="control-label"></label>
+                    <select asp-for="OrderStatusID" class="form-control" asp-items="ViewBag.Statuses">
+                        <option value="">--Select Order Status--</option>
+                    </select>
+                    <span asp-validation-for="OrderStatusID" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-12" style="margin-top: 20px;">
+                <input type="submit" value="Create" class="btn btn-default" /> |
+                <a asp-action="Index">Back to List</a>
+            </div>
+        </form>
+        <div class="col-md-12" style="margin-top: 20px;">
+            @section Scripts {
+                @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+            }
+        </div>
+    </section>
+</div>
+

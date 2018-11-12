@@ -17,6 +17,9 @@ namespace Discrepancy_Report_2.Models
         public string StatusDescription { get; set; }
 
         // navigation properties
-        public ICollection<OrderForm> OrderForms { get; set; }
+        // public ICollection<OrderForm> OrderForms { get; set; } old
+
+        // new Order Form connection
+        public ICollection<NewOrderForm> NewOrderForms { get; set; }
     }
 }

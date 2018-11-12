@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Discrepancy_Report_2.Models
 {
-    public class OrderForm
+    public class NewOrderForm
     {
         // ID == PK (created by EF)
         public int ID { get; set; }
@@ -29,10 +29,10 @@ namespace Discrepancy_Report_2.Models
         // Part Data
         // first the category
         [Display(Name = "Part Category")]
-        public int? PartCategoryID { get; set; }
+        public int PartCategoryID { get; set; }
         // then the sub category
         [Display(Name = "Part Subcategory")]
-        public int? PartSubCategoryID { get; set; }
+        public int PartSubCategoryID { get; set; }
         // next the part
         [Display(Name = "Part")]
         public string PartName { get; set; }
@@ -58,10 +58,9 @@ namespace Discrepancy_Report_2.Models
         public int OrderStatusID { get; set; }
 
         // navigation properties
-        //public Employee Employee { get; set; }
-        //public OrderStatus OrderStatus { get; set; }
-        //public PartCategory PartCategory { get; set; }
-        //public PartSubCategory PartSubCategory { get; set; }
-        // public Part Part { get; set; }
+        public Employee Employee { get; set; }
+        public OrderStatus OrderStatus { get; set; }
+        public PartCategory PartCategory { get; set; }
+        public PartSubCategory PartSubCategory { get; set; }
     }
 }

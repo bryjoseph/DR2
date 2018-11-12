@@ -1,0 +1,97 @@
+﻿@model IEnumerable<Discrepancy_Report_2.Models.NewOrderForm>
+
+@{
+    ViewData["Title"] = "Order Forms";
+}
+
+<h2>Order Forms</h2>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary" role="button">
+        <span class="glyphicon glyphicon-plus"></span>
+        &nbsp; Create New
+    </a>
+</p>
+
+<br />
+<!--SearchBox-->
+<form asp-action="Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            <input type="text" name="searchString" value="@ViewData["CurrentSearchFilter"]" />
+            <input type="submit" value="Search" class="btn btn-default" /> |
+            <a style="text-decoration:none; color:black" asp-action="Index">Back To Full List</a>
+        </p>
+    </div>
+</form>
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>
+                <span class="glyphicon glyphicon-triangle-bottom" style="font-size: 8px;"></span>
+                <a style="text-decoration:none; color:black" asp-action="Index" asp-route-sortOrder="@ViewData["OrderNumberSortParm"]">@Html.DisplayNameFor(model => model.OrderNumber)</a>
+                <span class="glyphicon glyphicon-triangle-top" style="font-size: 8px;"></span>
+            </th>
+            <th>
+                <span class="glyphicon glyphicon-triangle-bottom" style="font-size: 8px;"></span>
+                <a style="text-decoration:none; color:black" asp-action="Index" asp-route-sortOrder="@ViewData["DateCreatedSortParm"]">@Html.DisplayNameFor(model => model.DateOrderCreated)</a>
+                <span class="glyphicon glyphicon-triangle-top" style="font-size: 8px;"></span>
+            </th>
+            <th>
+                <span class="glyphicon glyphicon-triangle-bottom" style="font-size: 8px;"></span>
+                <a style="text-decoration:none; color:black" asp-action="Index" asp-route-sortOrder="@ViewData["CreatedBySortParm"]">@Html.DisplayNameFor(model => model.EmployeeID)</a>
+                <span class="glyphicon glyphicon-triangle-top" style="font-size: 8px;"></span>
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PartCategoryID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PartSubCategoryID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TrackingNumber)
+            </th>
+            <th>
+                <span class="glyphicon glyphicon-triangle-bottom" style="font-size: 8px;"></span>
+                <a style="text-decoration:none; color:black" asp-action="Index" asp-route-sortOrder="@ViewData["OrderStatusSortParm"]">@Html.DisplayNameFor(model => model.OrderStatusID)</a>
+                <span class="glyphicon glyphicon-triangle-top" style="font-size: 8px;"></span>
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OrderNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateOrderCreated)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Employee.FullName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PartCategory.CategoryName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PartSubCategory.SubCategoryName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TrackingNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OrderStatus.StatusDescription)
+                </td>
+                <td style="width: 15%">
+                    @Html.Partial("_TableButtonPartial", item.ID)
+                    @*<a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>*@
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

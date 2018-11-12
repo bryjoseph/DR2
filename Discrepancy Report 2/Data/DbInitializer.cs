@@ -309,11 +309,11 @@ namespace Discrepancy_Report_2.Data
             // seeding tag color data
             var colors = new TagColor[]
             {
-                new TagColor{ColorDescription="Green"},
-                new TagColor{ColorDescription="Red"},
-                new TagColor{ColorDescription="Yellow"},
-                new TagColor{ColorDescription="Blue"},
-                new TagColor{ColorDescription="Orange"}
+                new TagColor{ColorOfTag="Green"},
+                new TagColor{ColorOfTag="Red"},
+                new TagColor{ColorOfTag="Yellow"},
+                new TagColor{ColorOfTag="Blue"},
+                new TagColor{ColorOfTag="Orange"}
             };
             foreach(TagColor tg in colors)
             {
@@ -339,14 +339,14 @@ namespace Discrepancy_Report_2.Data
             // seeding Subcategory data
             var subcategories = new PartSubCategory[]
             {
-                new PartSubCategory{SubCategoryName="Boeing", CategoryID=1},
-                new PartSubCategory{SubCategoryName="GE", CategoryID=2},
-                new PartSubCategory{SubCategoryName="AeroShell", CategoryID=4},
-                new PartSubCategory{SubCategoryName="Dunlop Aviation", CategoryID=1},
-                new PartSubCategory{SubCategoryName="HB Fuller", CategoryID=5},
-                new PartSubCategory{SubCategoryName="L3", CategoryID=4},
-                new PartSubCategory{SubCategoryName="Rieker Instruments", CategoryID=3},
-                new PartSubCategory{SubCategoryName="UTC Aerospace Systems", CategoryID=1}
+                new PartSubCategory{SubCategoryName="Boeing"},
+                new PartSubCategory{SubCategoryName="GE"},
+                new PartSubCategory{SubCategoryName="AeroShell"},
+                new PartSubCategory{SubCategoryName="Dunlop Aviation"},
+                new PartSubCategory{SubCategoryName="HB Fuller"},
+                new PartSubCategory{SubCategoryName="L3"},
+                new PartSubCategory{SubCategoryName="Rieker Instruments"},
+                new PartSubCategory{SubCategoryName="UTC Aerospace Systems"}
             };
             foreach(PartSubCategory psc in subcategories)
             {
@@ -354,53 +354,79 @@ namespace Discrepancy_Report_2.Data
             }
             context.SaveChangesAsync();
 
-            // seeding Part data
-            var parts = new Part[]
+            // seeding the NEW Order Form Data
+            var orders = new NewOrderForm[]
             {
-                new Part{PartName="Winglet", PartNumber=12345, PartSerialNumber=09876, TagColorID=1, SubCategoryID=1},
-                new Part{PartName="Roll Altitude", PartNumber=12332, PartSerialNumber=09879, TagColorID=1, SubCategoryID=1},
-                new Part{PartName="Radome Boots", PartNumber=11234, PartSerialNumber=09877, TagColorID=1, SubCategoryID=2},
-                new Part{PartName="Oil Filter", PartNumber=22222, PartSerialNumber=000003, TagColorID=3, SubCategoryID=2},
-                new Part{PartName="ORing", PartNumber=12344, PartSerialNumber=09875, TagColorID=2, SubCategoryID=3},
-                new Part{PartName="Roll Altitude", PartNumber=12332, PartSerialNumber=09879, TagColorID=1, SubCategoryID=3},
-                new Part{PartName="Pneumatic Filter", PartNumber=11110, PartSerialNumber=000001, TagColorID=1, SubCategoryID=4},
-                new Part{PartName="Bushing", PartNumber=33333, PartSerialNumber=000003, TagColorID=1, SubCategoryID=4},
-                new Part{PartName="Piston Rod", PartNumber=44444, PartSerialNumber=000004, TagColorID=4, SubCategoryID=5},
-                new Part{PartName="Cargo Container", PartNumber=66666, PartSerialNumber=00005, TagColorID=1, SubCategoryID=5},
-                new Part{PartName="Baffle", PartNumber=55555, PartSerialNumber=000006, TagColorID=1, SubCategoryID=6},
-                new Part{PartName="Lens Replacement", PartNumber=77777, PartSerialNumber=000007, TagColorID=1, SubCategoryID=6},
-                new Part{PartName="Brake Pads", PartNumber=88888, PartSerialNumber=000007, TagColorID=1, SubCategoryID=7},
-                new Part{PartName="Tires", PartNumber=99999, PartSerialNumber=000008, TagColorID=2, SubCategoryID=7},
-                new Part{PartName=" Wing Stiffner", PartNumber=00011, PartSerialNumber=00009, TagColorID=1, SubCategoryID=8},
-                new Part{PartName="Wing Straps", PartNumber=00022, PartSerialNumber=000011, TagColorID=1, SubCategoryID=8}
+                new NewOrderForm{DateOrderCreated=DateTime.Parse("2018-12-01"),  Edd=DateTime.Parse("2018-12-15"),
+                                EmployeeID=employees.Single(e => e.FirstName == "Bob").ID,
+                                OrderNumber="XVY-1234",
+                                OrderStatusID=statuses.Single(s => s.StatusDescription == "New").ID,
+                                PartCategoryID=categories.Single(c => c.CategoryName == "Wings").ID,
+                                PartDocumentNumber="AV-0101",
+                                PartName="Winglet", PartQuantity=1,
+                                PartSubCategoryID=subcategories.Single(ps => ps.SubCategoryName == "Boeing").ID,
+                                TrackingNumber="AB1452-HJB0098", Ui="Nom"}
             };
-            foreach(Part p in parts)
+            foreach(NewOrderForm o in orders)
             {
-                context.Parts.Add(p);
-            }
-            context.SaveChangesAsync();
-
-            // seeding the Order Form Data
-            var oForms = new OrderForm[]
-            {
-                new OrderForm{OrderNumber="XVY-1234", EmployeeID=1, DateOrderCreated=DateTime.Parse("2018-12-01"),
-                                PartCategoryID=1, PartSubCategoryID=1, PartID=1, Ui="Nom", PartQuantity=1,
-                                PartDocumentNumber ="AV-0101", TrackingNumber="AB1452-HJB0098", Edd=DateTime.Parse("2018-12-15"),
-                                OrderStatusID=1},
-                new OrderForm{OrderNumber="HFJ-6574", EmployeeID=3, DateOrderCreated=DateTime.Parse("2018-12-03"),
-                                PartCategoryID=2, PartSubCategoryID=2, PartID=4, Ui="Oil", PartQuantity=10,
-                                PartDocumentNumber ="OL-0022", TrackingNumber="TS3245-KJGL9967", Edd=DateTime.Parse("2018-12-21"),
-                                OrderStatusID=2},
-                new OrderForm{OrderNumber="TTQ-9976", EmployeeID=1, DateOrderCreated=DateTime.Parse("2018-12-05"),
-                                PartCategoryID=3, PartSubCategoryID=7, PartID=13, Ui="BRK", PartQuantity=6,
-                                PartDocumentNumber ="BK-0113", TrackingNumber="BK2234-PIL1155", Edd=DateTime.Parse("2018-12-19"),
-                                OrderStatusID=3}
-            };
-            foreach(OrderForm of in oForms)
-            {
-                context.OrderForms.Add(of);
+                context.NewOrderForms.Add(o);
             }
             context.SaveChangesAsync();
         }
     }
 }
+
+// old seeding Part data
+//var parts = new Part[]
+//{
+//new Part{PartName="Winglet", PartNumber=12345, PartSerialNumber=09876, TagColorID=1, PartSubCategoryID=1},
+//new Part{PartName="Roll Altitude", PartNumber=12332, PartSerialNumber=09879, TagColorID=1, PartSubCategoryID=1},
+//new Part{PartName="Radome Boots", PartNumber=11234, PartSerialNumber=09877, TagColorID=1, PartSubCategoryID=2},
+//new Part{PartName="Oil Filter", PartNumber=22222, PartSerialNumber=000003, TagColorID=3, PartSubCategoryID=2},
+//new Part{PartName="ORing", PartNumber=12344, PartSerialNumber=09875, TagColorID=2, PartSubCategoryID=3},
+//new Part{PartName="Roll Altitude", PartNumber=12332, PartSerialNumber=09879, TagColorID=1, PartSubCategoryID=3},
+//new Part{PartName="Pneumatic Filter", PartNumber=11110, PartSerialNumber=000001, TagColorID=1, PartSubCategoryID=4},
+//new Part{PartName="Bushing", PartNumber=33333, PartSerialNumber=000003, TagColorID=1, PartSubCategoryID=4},
+//new Part{PartName="Piston Rod", PartNumber=44444, PartSerialNumber=000004, TagColorID=4, PartSubCategoryID=5},
+//new Part{PartName="Cargo Container", PartNumber=66666, PartSerialNumber=00005, TagColorID=1, PartSubCategoryID=5},
+//new Part{PartName="Baffle", PartNumber=55555, PartSerialNumber=000006, TagColorID=1, PartSubCategoryID=6},
+//new Part{PartName="Lens Replacement", PartNumber=77777, PartSerialNumber=000007, TagColorID=1, PartSubCategoryID=6},
+//new Part{PartName="Brake Pads", PartNumber=88888, PartSerialNumber=000007, TagColorID=1, PartSubCategoryID=7},
+//new Part{PartName="Tires", PartNumber=99999, PartSerialNumber=000008, TagColorID=2, PartSubCategoryID=7},
+//new Part{PartName=" Wing Stiffner", PartNumber=00011, PartSerialNumber=00009, TagColorID=1, PartSubCategoryID=8},
+//new Part{PartName="Wing Straps", PartNumber=00022, PartSerialNumber=000011, TagColorID=1, PartSubCategoryID=8}
+
+//updated
+//new Part{PartName="Winglet", PartNumber=12345, PartSerialNumber=09876, TagColorID=1},
+//new Part{PartName="Roll Altitude", PartNumber=12332, PartSerialNumber=09879, TagColorID=1},
+//new Part{PartName="Radome Boots", PartNumber=11234, PartSerialNumber=09877, TagColorID=1},
+//new Part{PartName="Oil Filter", PartNumber=22222, PartSerialNumber=000003, TagColorID=3},
+//new Part{PartName="ORing", PartNumber=12344, PartSerialNumber=09875, TagColorID=2},
+//new Part{PartName="Roll Altitude", PartNumber=12332, PartSerialNumber=09879, TagColorID=1},
+//new Part{PartName="Pneumatic Filter", PartNumber=11110, PartSerialNumber=000001, TagColorID=1},
+//new Part{PartName="Bushing", PartNumber=33333, PartSerialNumber=000003, TagColorID=1},
+//new Part{PartName="Piston Rod", PartNumber=44444, PartSerialNumber=000004, TagColorID=4},
+//new Part{PartName="Cargo Container", PartNumber=66666, PartSerialNumber=00005, TagColorID=1},
+//new Part{PartName="Baffle", PartNumber=55555, PartSerialNumber=000006, TagColorID=1},
+//new Part{PartName="Lens Replacement", PartNumber=77777, PartSerialNumber=000007, TagColorID=1},
+//new Part{PartName="Brake Pads", PartNumber=88888, PartSerialNumber=000007, TagColorID=1},
+//new Part{PartName="Tires", PartNumber=99999, PartSerialNumber=000008, TagColorID=2},
+//new Part{PartName="Wing Stiffner", PartNumber=00011, PartSerialNumber=00009, TagColorID=1},
+//new Part{PartName="Wing Straps", PartNumber=00022, PartSerialNumber=000011, TagColorID=1}
+//};
+//foreach(Part p in parts)
+//{
+//    context.Parts.Add(p);
+//}
+//context.SaveChangesAsync();
+
+
+// OLD subcat seed data
+//new PartSubCategory{SubCategoryName="Boeing", PartCategoryID=1},
+//new PartSubCategory{SubCategoryName="GE", PartCategoryID=2},
+//new PartSubCategory{SubCategoryName="AeroShell", PartCategoryID=4},
+//new PartSubCategory{SubCategoryName="Dunlop Aviation", PartCategoryID=1},
+//new PartSubCategory{SubCategoryName="HB Fuller", PartCategoryID=5},
+//new PartSubCategory{SubCategoryName="L3", PartCategoryID=4},
+//new PartSubCategory{SubCategoryName="Rieker Instruments", PartCategoryID=3},
+//new PartSubCategory{SubCategoryName="UTC Aerospace Systems", PartCategoryID=1}

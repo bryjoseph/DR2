@@ -11,9 +11,10 @@ using System;
 namespace Discrepancy_Report_2.Data.Migrations
 {
     [DbContext(typeof(MaintenanceDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20181108192018_NewOrderForm")]
+    partial class NewOrderForm
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -314,7 +315,7 @@ namespace Discrepancy_Report_2.Data.Migrations
 
                     b.Property<int>("OrderStatusID");
 
-                    b.Property<int>("PartCategoryID");
+                    b.Property<int?>("PartCategoryID");
 
                     b.Property<string>("PartDocumentNumber");
 
@@ -322,7 +323,7 @@ namespace Discrepancy_Report_2.Data.Migrations
 
                     b.Property<int?>("PartQuantity");
 
-                    b.Property<int>("PartSubCategoryID");
+                    b.Property<int?>("PartSubCategoryID");
 
                     b.Property<string>("TrackingNumber");
 
@@ -727,13 +728,11 @@ namespace Discrepancy_Report_2.Data.Migrations
 
                     b.HasOne("Discrepancy_Report_2.Models.PartCategory", "PartCategory")
                         .WithMany("NewOrderForms")
-                        .HasForeignKey("PartCategoryID")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("PartCategoryID");
 
                     b.HasOne("Discrepancy_Report_2.Models.PartSubCategory", "PartSubCategory")
                         .WithMany("NewOrderForms")
-                        .HasForeignKey("PartSubCategoryID")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("PartSubCategoryID");
                 });
 
             modelBuilder.Entity("Discrepancy_Report_2.Models.Part", b =>

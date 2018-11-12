@@ -1,4 +1,4 @@
-﻿using System;
+﻿ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -27,10 +27,11 @@ namespace Discrepancy_Report_2.Models
         [Display(Name = "Tag Color")]
         public int TagColorID { get; set; }
 
-        public int SubCategoryID { get; set; }
+        // public int PartSubCategoryID { get; set; }
 
         // navigation properties
-        public ICollection<OrderForm> OrderForms { get; set; }
+        // public ICollection<OrderForm> OrderForms { get; set; }
+        // public PartSubCategory PartSubCategory { get; set; }
         public TagColor TagColor { get; set; }
     }
 }
