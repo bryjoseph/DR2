@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2046
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Discrepancy Report 2", "Discrepancy Report 2\Discrepancy Report 2.csproj", "{9009D4AE-85F0-49BA-9F06-FB20ACDE1CD1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiscrepancyReport2", "Discrepancy Report 2\DiscrepancyReport2.csproj", "{9009D4AE-85F0-49BA-9F06-FB20ACDE1CD1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

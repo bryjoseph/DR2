@@ -19,6 +19,9 @@ namespace Discrepancy_Report_2.Models
         [Display(Name = "Tail Number")]
         public string TailNumber { get; set; }
         public int AircraftModelID { get; set; }
+        [Display(Name = "Is New Aircraft")]
+        public bool IsNewAircraft { get; set; }
+        public string StatusMessage { get; set; }
 
         // navigation properties
         public ICollection<AircraftLocationAssignment> AircraftLocationAssignments { get; set; }

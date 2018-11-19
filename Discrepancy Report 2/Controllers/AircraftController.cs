@@ -14,6 +14,10 @@ namespace Discrepancy_Report_2.Controllers
     {
         private readonly MaintenanceDbContext _context;
 
+        // temp data will display the error message or success message only one time
+        //[TempData]
+        //public string StatusMessage { get; set; }
+
         public AircraftController(MaintenanceDbContext context)
         {
             _context = context;
@@ -116,14 +120,40 @@ namespace Discrepancy_Report_2.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(
-            [Bind("ID,FaaNumber,EasaNumber,TailNumber,AircraftModelID")] Aircraft aircraft)
+            [Bind("ID,FaaNumber,EasaNumber,TailNumber,AircraftModelID, IsNewAircraft")] Aircraft aircraft)
         {
             if (ModelState.IsValid)
-            {
-                _context.Add(aircraft);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+            {   
+                // do not want to create repeated aircraft in DB
+                // first check if a tail number in DB matches the tail number being created
+                var doesAircraftExist = _context.Aircrafts.Where(a => a.TailNumber == aircraft.TailNumber).Count();
+                
+                // now confirm the count received from the DB call
+                if (doesAircraftExist > 0 && aircraft.IsNewAircraft)
+                {
+                    // error message because the aircraft exists already even though the isNew check was applied
+                    ModelState.AddModelError(string.Empty, "Error : Tail Number for aircraft already exists");
+                }
+                else
+                {
+                    if(doesAircraftExist == 0 && !aircraft.IsNewAircraft)
+                    {
+                        // error message regarding the creation of a new aircraft without the isNew check
+                        ModelState.AddModelError(string.Empty, "Error : Check the 'Is New' box for new aircraft");
+                    }
+                    else
+                    {
+                        _context.Add(aircraft);
+                        await _context.SaveChangesAsync();
+                        return RedirectToAction(nameof(Index));
+                    }
+                }
+                // keeping original in case this validation fails
+                //_context.Add(aircraft);
+                //await _context.SaveChangesAsync();
+                //return RedirectToAction(nameof(Index));
             }
+
             PopulateAircraftModelsDropDownList(aircraft.AircraftModelID);
             return View(aircraft);
         }

@@ -2,8 +2,10 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
-    <UserSecretsId>aspnet-Discrepancy_Report_2-B53D11DA-5C13-4C5B-936D-6531D7614F01</UserSecretsId>
+    <UserSecretsId>aspnet-DiscrepancyReport2-B53D11DA-5C13-4C5B-936D-6531D7614F01</UserSecretsId>
     <DockerTargetOS>Windows</DockerTargetOS>
+    <AssemblyName>DiscrepancyReport2</AssemblyName>
+    <RootNamespace>DiscrepancyReport2</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
@@ -25,6 +27,12 @@
     <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="2.0.3" />
     <DotNetCliToolReference Include="Microsoft.Extensions.SecretManager.Tools" Version="2.0.2" />
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="Views\Shared\_StatusMessage.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
   </ItemGroup>
 
 </Project>
